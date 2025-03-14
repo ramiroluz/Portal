@@ -1,110 +1,110 @@
 # Câmara de Curitiba 🚀
 
-[![Built with Cookiecutter Plone Starter](https://img.shields.io/badge/built%20with-Cookiecutter%20Plone%20Starter-0083be.svg?logo=cookiecutter)](https://github.com/collective/cookiecutter-plone-starter/)
-[![Black code style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
-[![Backend Tests](https://github.com/collective/camara-de-curitiba/actions/workflows/backend.yml/badge.svg)](https://github.com/collective/camara-de-curitiba/actions/workflows/backend.yml)
-[![Frontend Tests](https://github.com/collective/camara-de-curitiba/actions/workflows/frontend.yml/badge.svg)](https://github.com/collective/camara-de-curitiba/actions/workflows/frontend.yml)
+[![Construído com Cookiecutter Plone Starter](https://img.shields.io/badge/built%20with-Cookiecutter%20Plone%20Starter-0083be.svg?logo=cookiecutter)](https://github.com/collective/cookiecutter-plone-starter/)
+[![Estilo de código Black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
+[![Testes do Backend](https://github.com/collective/camara-de-curitiba/actions/workflows/backend.yml/badge.svg)](https://github.com/collective/camara-de-curitiba/actions/workflows/backend.yml)
+[![Testes do Frontend](https://github.com/collective/camara-de-curitiba/actions/workflows/frontend.yml/badge.svg)](https://github.com/collective/camara-de-curitiba/actions/workflows/frontend.yml)
 
-A new project using Plone 6.
+Um novo projeto utilizando Plone 6.
 
-## Quick Start 🏁
+## Início Rápido 🏁
 
-### Prerequisites ✅
+### Pré-requisitos ✅
 
-Ensure you have the following installed:
+Certifique-se de ter os seguintes itens instalados:
 
 - Python 3.11 🐍
 - Node 20 🟩
 - yarn 🧶
 - Docker 🐳
 
-### Installation 🔧
+### Instalação 🔧
 
-1. Clone the repository:
+1. Clone o repositório:
 
 ```shell
-git clone git@github.com:collective/camara-de-curitiba.git
+git clone --
 cd camara-de-curitiba
 ```
 
-2. Install both Backend and Frontend:
+2. Instale tanto o Backend quanto o Frontend:
 
 ```shell
 make install
 ```
 
-### Fire Up the Servers 🔥
+### Iniciando os Servidores 🔥
 
-1. Create a new Plone site on your first run:
+1. Crie um novo site Plone na sua primeira execução:
 
 ```shell
 make create-site
 ```
 
-2. Start the Backend at [http://localhost:8080/](http://localhost:8080/):
+2. Inicie o Backend em [http://localhost:8080/](http://localhost:8080/):
 
 ```shell
 make start-backend
 ```
 
-3. In a new terminal, start the Frontend at [http://localhost:3000/](http://localhost:3000/):
+3. Em um novo terminal, inicie o Frontend em [http://localhost:3000/](http://localhost:3000/):
 
 ```shell
 make start-frontend
 ```
 
-Voila! Your Plone site should be live and kicking! 🎉
+E pronto! Seu site Plone está rodando! 🎉
 
-### Local Stack Deployment 📦
+### Implantação da Stack Local 📦
 
-Deploy a local `Docker Compose` environment that includes:
+Implante um ambiente `Docker Compose` local que inclui:
 
-- Docker images for Backend and Frontend 🖼️
-- A stack with a Traefik router and a Postgres database 🗃️
-- Accessible at [http://srv710292.hstgr.cloud](http://srv710292.hstgr.cloud) 🌐
+- Imagens Docker para Backend e Frontend 🖼️
+- Uma stack com um roteador Traefik e um banco de dados Postgres 🗃️
+- Acessível em [http://srv710292.hstgr.cloud](http://srv710292.hstgr.cloud) 🌐
 
-Execute the following:
+Execute os seguintes comandos:
 
 ```shell
 make stack-start
 make stack-create-site
 ```
 
-And... you're all set! Your Plone site is up and running locally! 🚀
+E pronto! Seu site Plone está rodando localmente! 🚀
 
-## Project Structure 🏗️
+## Estrutura do Projeto 🏗️
 
-This monorepo consists of three distinct sections: `backend`, `frontend`, and `devops`.
+Este monorepo consiste em três seções distintas: `backend`, `frontend` e `devops`.
 
-- **backend**: Houses the API and Plone installation, utilizing pip instead of buildout, and includes a policy package named camara_de_curitiba.
-- **frontend**: Contains the React (Volto) package.
-- **devops**: Encompasses Docker Stack, Ansible playbooks, and Cache settings.
+- **backend**: Contém a API e a instalação do Plone, utilizando pip em vez de buildout, incluindo um pacote de política chamado `camara_de_curitiba`.
+- **frontend**: Contém o pacote React (Volto).
+- **devops**: Inclui a Stack Docker, playbooks Ansible e configurações de cache.
 
-### Why This Structure? 🤔
+### Por que essa estrutura? 🤔
 
-- All necessary codebases to run the site are contained within the repo (excluding existing addons for Plone and React).
-- Specific GitHub Workflows are triggered based on changes in each codebase (refer to .github/workflows).
-- Simplifies the creation of Docker images for each codebase.
-- Demonstrates Plone installation/setup without buildout.
+- Todo o código necessário para rodar o site está contido no repositório (exceto addons existentes para Plone e React).
+- Workflows específicos do GitHub são acionados com base em mudanças em cada parte do código (veja `.github/workflows`).
+- Facilita a criação de imagens Docker para cada parte do código.
+- Demonstra a instalação/configuração do Plone sem buildout.
 
-## Code Quality Assurance 🧐
+## Garantia de Qualidade do Código 🧐
 
-To automatically format your code and ensure it adheres to quality standards, execute:
+Para formatar automaticamente seu código e garantir que ele segue os padrões de qualidade, execute:
 
 ```shell
 make format
 ```
 
-Linters can be run individually within the `backend` or `frontend` folders.
+Linters também podem ser executados individualmente dentro das pastas `backend` ou `frontend`.
 
-## Internationalization 🌐
+## Internacionalização 🌐
 
-Generate translation files for Plone and Volto with ease:
+Gere arquivos de tradução para Plone e Volto facilmente:
 
 ```shell
 make i18n
 ```
 
-## Credits and Acknowledgements 🙏
+## Créditos e Agradecimentos 🙏
 
-Crafted with care by **This was generated by [cookiecutter-plone-starter](https://github.com/collective/cookiecutter-plone-starter) on 2025-01-21 23:10:45**. A special thanks to all contributors and supporters!
+Criado com carinho por **Este projeto foi gerado pelo [cookiecutter-plone-starter](https://github.com/collective/cookiecutter-plone-starter) em 21/01/2025 às 23:10:45**. Um agradecimento especial a todos os contribuidores e apoiadores!
