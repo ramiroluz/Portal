@@ -1,0 +1,6 @@
+graft src/camara_de_curitiba
+graft docs
+include *.rst
+include *.md
+include *.cfg
+global-exclude *.pyc

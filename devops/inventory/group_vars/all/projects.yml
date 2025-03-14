@@ -1,0 +1,7 @@
+---
+project_folders:
+  # Path to store srv710292.hstgr.cloud postgres data
+  - path: "/srv/camara-de-curitiba/data"
+    owner: 999
+    group: 999
+    mode: "0750"
