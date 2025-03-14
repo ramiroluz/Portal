@@ -2,8 +2,6 @@
 
 [![Construído com Cookiecutter Plone Starter](https://img.shields.io/badge/built%20with-Cookiecutter%20Plone%20Starter-0083be.svg?logo=cookiecutter)](https://github.com/collective/cookiecutter-plone-starter/)
 [![Estilo de código Black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
-[![Testes do Backend](https://github.com/collective/camara-de-curitiba/actions/workflows/backend.yml/badge.svg)](https://github.com/collective/camara-de-curitiba/actions/workflows/backend.yml)
-[![Testes do Frontend](https://github.com/collective/camara-de-curitiba/actions/workflows/frontend.yml/badge.svg)](https://github.com/collective/camara-de-curitiba/actions/workflows/frontend.yml)
 
 Um novo projeto utilizando Plone 6.
 
