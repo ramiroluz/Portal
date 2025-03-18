@@ -5,7 +5,7 @@ import {addStyling} from '@plone/volto/helpers/Extensions/withBlockSchemaEnhance
 const messages = defineMessages({
   midiaBlock: {
     id: 'midiaBlock',
-    defaultMessage: 'Banners sidebar home',
+    defaultMessage: 'Bloco Podcasts, Lives e Institucional',
   },
   links: {
     id: 'links',
@@ -21,41 +21,113 @@ export const Schema = (props) => {
       {
         id: 'default',
         title: 'Default',
-        fields: ['links'],
+        fields: ['podcasts', 'lives', 'institucional'],
       },
     ],
     properties: {
-      links: {
-        title: "Banners",
+      podcasts: {
+        title: "Podcasts",
         widget: "object_list", // Widget para gerenciar listas de objetos
         mode: "array", // Permite múltiplos itens
         schema: {
-          title: "Link",
+          title: "Video",
           fieldsets: [
             {
               id: 'default',
               title: 'Default',
-              fields: ['link', 'image'],
+              fields: ['title', 'link', 'image', 'description'],
             },
           ],
           properties: {
-           image: {
+            title: {
+              title: "Título",
+              mode: 'string',
+            },
+            description: {
+              title: "Descrição",
+              mode: 'string',
+            },
+            image: {
               title: "Imagem",
-              widget: 'object_browser',
-              mode: 'image',
-              allowExternals: true,
+              widget: 'image',
             },
             link: {
-              title: "Link",
-              widget: "object_browser", // Usa o widget object_browser
-              mode: "link", // Vincula ao objeto no Plone
-              allowExternals:true,
+              title: "Link Youtube",
+              mode: 'string',
             },
           },
-          required: ['link', 'image'],
+          required: ['title', 'link', 'image'],
+        },
+      },
+      lives: {
+        title: "Lives",
+        widget: "object_list", // Widget para gerenciar listas de objetos
+        mode: "array", // Permite múltiplos itens
+       schema: {
+          title: "Video",
+          fieldsets: [
+            {
+              id: 'default',
+              title: 'Default',
+              fields: ['title', 'link', 'image', 'description'],
+            },
+          ],
+          properties: {
+            title: {
+              title: "Título",
+              mode: 'string',
+            },
+            description: {
+              title: "Descrição",
+              mode: 'string',
+            },
+            image: {
+              title: "Imagem",
+              widget: 'image',
+            },
+            link: {
+              title: "Link Youtube",
+              mode: 'string',
+            },
+          },
+          required: ['title', 'link', 'image'],
+        },
+      },
+      institucional: {
+        title: "Institucionais",
+        widget: "object_list", // Widget para gerenciar listas de objetos
+        mode: "array", // Permite múltiplos itens
+          schema: {
+          title: "Video",
+          fieldsets: [
+            {
+              id: 'default',
+              title: 'Default',
+              fields: ['title', 'link', 'image', 'description'],
+            },
+          ],
+          properties: {
+            title: {
+              title: "Título",
+              mode: 'string',
+            },
+            description: {
+              title: "Descrição",
+              mode: 'string',
+            },
+            image: {
+              title: "Imagem",
+              widget: 'image',
+            },
+            link: {
+              title: "Link Youtube",
+              mode: 'string',
+            },
+          },
+          required: ['title', 'link', 'image'],
         },
       },
     },
-    required: ['links'],
+    required: [],
   };
 };

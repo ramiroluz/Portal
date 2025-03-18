@@ -71,15 +71,55 @@ const videos = [
         excerpt: ""
     }
 ];
+
+function createYouTubeEmbed(url, options = {}) {
+    const {width = 560, height = 315, allowFullScreen = true} = options;
+
+    // Extrair o ID do vídeo a partir do URL
+    const videoId = url?.split('v=')[1]?.split('&')[0] || "";
+    if (!videoId) {
+        throw new Error('URL inválida. Certifique-se de que seja um link do YouTube.');
+    }
+
+    // Montar o URL de embed
+    const embedUrl = `https://www.youtube.com/embed/${videoId}`;
+    // Criar o iframe
+    return embedUrl
+}
+
+
+function getYouTubeThumbnail(url) {
+    // Verifica se a URL é válida
+    const regExp = /(?:https?:\/\/)?(?:www\.)?youtu(?:be\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|embed)\/|\S*?[?&]v=)|\.be\/)([a-zA-Z0-9_-]{11})/;
+    const match = url.match(regExp);
+
+    if (match && match[1]) {
+        const videoId = match[1];
+        // Retorna a URL da thumbnail padrão
+        return `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+    } else {
+        throw new Error("URL inválida do YouTube");
+    }
+}
+
 const View = (props) => {
     const {data, isEditMode, className, block, classes} = props;
+    const {podcasts, lives, institucional} = data;
     const Image = config.getComponent('Image').component;
-
     const [value, setValue] = React.useState(0);
-
+    const [podcastSelect, setPodcastSelect] = useState(0);
+    const [livesSelect, setLivesSelect] = useState(0);
+    const [institucionalSelect, setInstitucionalSelect] = useState(0);
+    const [autoPlayUseEffectP, setAutoPlayUseEffectP] = useState(false);
+    console.log(podcasts, lives, institucional);
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
         setValue(newValue);
     };
+
+    useEffect(() => {
+        setAutoPlayUseEffectP(false);
+    }, [value]);
+
     return (
         <div className="w-100">
             <div className="midiaBlock">
@@ -93,41 +133,37 @@ const View = (props) => {
                                 </Button>
                                 <Button className={value === 1 ? "tab-top act" : "tab-top"} onClick={() => setValue(1)}>
                                     <img src="/icons/podcast.svg" alt=""/>
-                                    Institucional
+                                    Lives
                                 </Button>
                                 <Button className={value === 2 ? "tab-top act" : "tab-top"} onClick={() => setValue(2)}>
                                     <img src="/icons/lives.svg" alt=""/>
-                                    Lives
+                                    Institucionais
                                 </Button>
-                            </div>
-                            <div className="box d-mb-none">
-                                <Link className="ver-mais">
-                                    Ver mais
-                                    <img src="/icons/chevron-link.svg"/>
-                                </Link>
                             </div>
                         </div>
                         <CustomTabPanel value={value} index={0}>
                             <Stack sx={{gap: "24px"}} direction="row" className="flex-midia">
-                                <Stack className="flex-2">
-                                    <Stack className="video-item" spacing={2}>
-                                        <div className="thumbnail">
-                                            <img src="/images/midia/1.png" alt=""/>
-                                            <div className="play">
-                                                <img src="/icons/play.svg"/>
-                                            </div>
-                                        </div>
-                                        <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                            tempor
-                                            incididunt ut labore et dolore magna...</h3>
-                                        <p>Out 28, 2024 | 10:35</p>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                            tempor
-                                            incididunt ut labore et dolore magna aliqua.
-                                        </p>
-                                    </Stack>
-                                </Stack>
+                                {
+                                    podcasts.length > 0 && (
+                                        <Stack className="flex-2">
+                                            <Stack className="video-item" spacing={2}>
+                                                <div className="thumbnail">
+                                                    <iframe
+                                                        src={createYouTubeEmbed(podcasts[podcastSelect]?.link) + (autoPlayUseEffectP ? '?autoplay=1' : '')}
+                                                        frameBorder="0" allowFullScreen="true" allow='autoplay'></iframe>
+                                                    {/*  <img src={podcasts[podcastSelect]?.image + "/@@images/image"} alt={podcasts[podcastSelect]?.title} loading="lazy"/>
+                                                    <div className="play">
+                                                        <img src="/icons/play.svg"/>
+                                                    </div>*/}
+                                                </div>
+                                                <h3>{podcasts[podcastSelect]?.title}</h3>
+                                                <p className="fs-14">
+                                                    {podcasts[podcastSelect]?.description}
+                                                </p>
+                                            </Stack>
+                                        </Stack>
+                                    )
+                                }
                                 <Stack className="flex-1 small" sx={{gap: "24px"}}>
                                     <Typography sx={{
                                         fontSize: "24px",
@@ -137,79 +173,146 @@ const View = (props) => {
                                     }}>
                                         Assista a seguir
                                     </Typography>
-                                    <Stack className="video-item" sx={{gap: "10px"}} direction="row"
-                                           alignItems="center">
-                                        <div className="thumbnail">
-                                            <img src="/images/midia/1.png" alt=""/>
-                                            <div className="play">
-                                                <img src="/icons/play.svg"/>
-                                            </div>
-                                        </div>
-                                        <Stack>
-                                            <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                                tempor
-                                                incididunt ut labore et dolore...</h3>
-                                            <p>Out 28, 2024 | 10:35</p>
-                                        </Stack>
-                                    </Stack>
-                                    <Stack className="video-item" sx={{gap: "10px"}} direction="row"
-                                           alignItems="center">
-                                        <div className="thumbnail">
-                                            <img src="/images/midia/1.png" alt=""/>
-                                            <div className="play">
-                                                <img src="/icons/play.svg"/>
-                                            </div>
-                                        </div>
-                                        <Stack>
-                                            <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                                tempor
-                                                incididunt ut labore et dolore...</h3>
-                                            <p>Out 28, 2024 | 10:35</p>
-                                        </Stack>
-                                    </Stack>
-                                    <Stack className="video-item" sx={{gap: "10px"}} direction="row"
-                                           alignItems="center">
-                                        <div className="thumbnail">
-                                            <img src="/images/midia/1.png" alt=""/>
-                                            <div className="play">
-                                                <img src="/icons/play.svg"/>
-                                            </div>
-                                        </div>
-                                        <Stack>
-                                            <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                                tempor
-                                                incididunt ut labore et dolore...</h3>
-                                            <p>Out 28, 2024 | 10:35</p>
-                                        </Stack>
-                                    </Stack>
-                                    <Stack className="video-item" sx={{gap: "10px"}} direction="row"
-                                           alignItems="center">
-                                        <div className="thumbnail">
-                                            <img src="/images/midia/1.png" alt=""/>
-                                            <div className="play">
-                                                <img src="/icons/play.svg"/>
-                                            </div>
-                                        </div>
-                                        <Stack>
-                                            <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                                tempor
-                                                incididunt ut labore et dolore...</h3>
-                                            <p>Out 28, 2024 | 10:35</p>
-                                        </Stack>
-                                    </Stack>
+                                    {
+                                        podcasts.slice(0, 4).map((z, i) => z?.link ? (
+                                            <Stack className="video-item" sx={{gap: "10px"}} direction="row"
+                                                   alignItems="center" onClick={() => {
+                                                setAutoPlayUseEffectP(true);
+                                                setPodcastSelect(i)
+                                            }}>
+                                                <div className="thumbnail">
+                                                    <img
+                                                        src={z?.image ? (z?.image + "/@@images/image") : getYouTubeThumbnail(z?.link)}
+                                                        alt={z?.title} loading="lazy"/>
+                                                    <div className="play">
+                                                        <img src="/icons/play.svg"/>
+                                                    </div>
+                                                </div>
+                                                <Stack>
+                                                    <h3>{z?.title}</h3>
+                                                </Stack>
+                                            </Stack>
+                                        ) : <></>)
+                                    }
                                 </Stack>
                             </Stack>
                         </CustomTabPanel>
                         <CustomTabPanel value={value} index={1}>
-                            Item Two
+                            <Stack sx={{gap: "24px"}} direction="row" className="flex-midia">
+                                {
+                                    lives.length > 0 && (
+                                        <Stack className="flex-2">
+                                            <Stack className="video-item" spacing={2}>
+                                                <div className="thumbnail">
+                                                    <iframe
+                                                        src={createYouTubeEmbed(lives[livesSelect]?.link) + (autoPlayUseEffectP ? '?autoplay=1' : '')}
+                                                        frameBorder="0" allowFullScreen="true" allow='autoplay'></iframe>
+                                                    {/*  <img src={podcasts[podcastSelect]?.image + "/@@images/image"} alt={podcasts[podcastSelect]?.title} loading="lazy"/>
+                                                    <div className="play">
+                                                        <img src="/icons/play.svg"/>
+                                                    </div>*/}
+                                                </div>
+                                                <h3>{lives[livesSelect]?.title}</h3>
+                                                <p className="fs-14">
+                                                    {lives[livesSelect]?.description}
+                                                </p>
+                                            </Stack>
+                                        </Stack>
+                                    )
+                                }
+                                <Stack className="flex-1 small" sx={{gap: "24px"}}>
+                                    <Typography sx={{
+                                        fontSize: "24px",
+                                        fontFamily: "Lato, sans-serif",
+                                        color: "white",
+                                        fontWeight: "bold"
+                                    }}>
+                                        Assista a seguir
+                                    </Typography>
+                                    {
+                                        lives.slice(0, 4).map((z, i) => z?.link ? (
+                                            <Stack className="video-item" sx={{gap: "10px"}} direction="row"
+                                                   alignItems="center" onClick={() => {
+                                                setAutoPlayUseEffectP(true);
+                                                setLivesSelect(i)
+                                            }}>
+                                                <div className="thumbnail">
+                                                    <img
+                                                        src={z?.image ? (z?.image + "/@@images/image") : getYouTubeThumbnail(z?.link)}
+                                                        alt={z?.title} loading="lazy"/>
+                                                    <div className="play">
+                                                        <img src="/icons/play.svg"/>
+                                                    </div>
+                                                </div>
+                                                <Stack>
+                                                    <h3>{z?.title}</h3>
+                                                </Stack>
+                                            </Stack>
+                                        ) : <></>)
+                                    }
+                                </Stack>
+                            </Stack>
                         </CustomTabPanel>
                         <CustomTabPanel value={value} index={2}>
-                            Item Three
+                            <Stack sx={{gap: "24px"}} direction="row" className="flex-midia">
+                                {
+                                    institucional.length > 0 && (
+                                        <Stack className="flex-2">
+                                            <Stack className="video-item" spacing={2}>
+                                                <div className="thumbnail">
+                                                    <iframe
+                                                        src={createYouTubeEmbed(institucional[institucionalSelect]?.link) + (autoPlayUseEffectP ? '?autoplay=1' : '')}
+                                                        frameBorder="0" allowFullScreen="true" allow='autoplay'></iframe>
+                                                    {/*  <img src={podcasts[podcastSelect]?.image + "/@@images/image"} alt={podcasts[podcastSelect]?.title} loading="lazy"/>
+                                                    <div className="play">
+                                                        <img src="/icons/play.svg"/>
+                                                    </div>*/}
+                                                </div>
+                                                <h3>{institucional[podcastSelect]?.title}</h3>
+                                                <p className="fs-14">
+                                                    {institucional[podcastSelect]?.description}
+                                                </p>
+                                            </Stack>
+                                        </Stack>
+                                    )
+                                }
+                                <Stack className="flex-1 small" sx={{gap: "24px"}}>
+                                    <Typography sx={{
+                                        fontSize: "24px",
+                                        fontFamily: "Lato, sans-serif",
+                                        color: "white",
+                                        fontWeight: "bold"
+                                    }}>
+                                        Assista a seguir
+                                    </Typography>
+                                    {
+                                        institucional.slice(0, 4).map((z, i) => z?.link ? (
+                                            <Stack className="video-item" sx={{gap: "10px"}} direction="row"
+                                                   alignItems="center" onClick={() => {
+                                                setAutoPlayUseEffectP(true);
+                                                setInstitucionalSelect(i)
+                                            }}>
+                                                <div className="thumbnail">
+                                                    <img
+                                                        src={z?.image ? (z?.image + "/@@images/image") : getYouTubeThumbnail(z?.link)}
+                                                        alt={z?.title} loading="lazy"/>
+                                                    <div className="play">
+                                                        <img src="/icons/play.svg"/>
+                                                    </div>
+                                                </div>
+                                                <Stack>
+                                                    <h3>{z?.title}</h3>
+                                                </Stack>
+                                            </Stack>
+                                        ) : <></>)
+                                    }
+                                </Stack>
+                            </Stack>
                         </CustomTabPanel>
                     </div>
                 </div>
             </div>
-            </div>
+        </div>
     )
 };
 
