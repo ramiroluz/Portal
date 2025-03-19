@@ -28,6 +28,7 @@ const View = (props) => {
                                 />
                             </div>
                             <div className="content">
+                                <span className="tag-color inline-block">Sem categoria</span>
                                 <h2>{link?.link[0]?.title}</h2>
                             </div>
                         </Link>
@@ -44,6 +45,7 @@ const View = (props) => {
                                         />
                                     </div>
                                     <div className="content">
+                                         <span className="tag-color inline-block">Sem categoria</span>
                                         <h2>{link?.link[0]?.title}</h2>
                                     </div>
                                 </div>
@@ -53,11 +55,10 @@ const View = (props) => {
                 </div>
 
                 <div className="news stack row gap-24 flex-mb flex-column-mb">
-                    {links && links.slice(3, 5).map((link, index) => (
+                {links && links.slice(3, 5).map((link, index) => (
                         <Link to={link?.link[0]["getPath"].replace("/Plone/", "")} key={index}
                               className="new card-default flex-1">
                             <div className="context">
-                                <h2>{link?.link[0]?.title}</h2>
                                 <div className="thumbnail">
                                     {/* Verificando se a imagem existe antes de exibir */}
                                     <img
@@ -65,11 +66,8 @@ const View = (props) => {
                                         alt={link?.link[0]?.title}
                                     />
                                 </div>
-                                {
-                                    link?.link[0].subject &&
-                                    <span
-                                        className="tag-color">{link?.link[0].subject[0]?.title || 'Categoria'}</span>
-                                }
+                                <span className="tag-color">Sem categoria</span>
+                                <h2 className="mt-0">{link?.link[0]?.title}</h2>
                             </div>
                         </Link>
                     ))}
@@ -81,7 +79,8 @@ const View = (props) => {
 
                 <div className="grid-col-2 news-2-columns">
                     {links && links.slice(5, 12).map((link, index) => (
-                        <Link to={link?.link[0]["getPath"].replace("/Plone/", "")} key={index} className="new card-default flex-1">
+                        <Link to={link?.link[0]["getPath"].replace("/Plone/", "")} key={index}
+                              className="new card-default flex-1">
                             <div className="context">
                                 <div className="thumbnail">
                                     <img
@@ -90,11 +89,11 @@ const View = (props) => {
                                     />
                                 </div>
                                 <div className="info">
-                                    <h2>{link?.link[0]?.title}</h2>
-                                    {/*<span className="tag-color inline-block"*/}
-                                    {/*      style={{backgroundColor: "#102A4D", color: "white"}}>*/}
-                                    {/*{link.subject[0]?.title || 'Categoria'}*/}
-                                    {/*</span>*/}
+                                    <span className="tag-color inline-block"
+                                          style={{backgroundColor: "#102A4D", color: "white"}}>
+                                        Sem categoria
+                                    </span>
+                                    <h2 className="mt-0">{link?.link[0]?.title}</h2>
                                 </div>
                             </div>
                         </Link>
@@ -103,7 +102,7 @@ const View = (props) => {
 
                 <div className="button-call stack row align-items-center flex-center">
                     <Link className="button-primary" to="/noticias">
-                        Veja todas as matérias
+                        Veja todas as notícias
                     </Link>
                 </div>
             </div>

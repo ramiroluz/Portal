@@ -78,7 +78,7 @@ function createYouTubeEmbed(url, options = {}) {
     // Extrair o ID do vídeo a partir do URL
     const videoId = url?.split('v=')[1]?.split('&')[0] || "";
     if (!videoId) {
-        throw new Error('URL inválida. Certifique-se de que seja um link do YouTube.');
+        //throw new Error('URL inválida. Certifique-se de que seja um link do YouTube.');
     }
 
     // Montar o URL de embed
@@ -144,7 +144,7 @@ const View = (props) => {
                         <CustomTabPanel value={value} index={0}>
                             <Stack sx={{gap: "24px"}} direction="row" className="flex-midia">
                                 {
-                                    podcasts.length > 0 && (
+                                    podcasts?.length > 0 && (
                                         <Stack className="flex-2">
                                             <Stack className="video-item" spacing={2}>
                                                 <div className="thumbnail">
@@ -174,7 +174,7 @@ const View = (props) => {
                                         Assista a seguir
                                     </Typography>
                                     {
-                                        podcasts.slice(0, 4).map((z, i) => z?.link ? (
+                                        podcasts?.slice(0, 4).map((z, i) => z?.link ? (
                                             <Stack className="video-item" sx={{gap: "10px"}} direction="row"
                                                    alignItems="center" onClick={() => {
                                                 setAutoPlayUseEffectP(true);
@@ -200,7 +200,7 @@ const View = (props) => {
                         <CustomTabPanel value={value} index={1}>
                             <Stack sx={{gap: "24px"}} direction="row" className="flex-midia">
                                 {
-                                    lives.length > 0 && (
+                                    lives?.length > 0 && (
                                         <Stack className="flex-2">
                                             <Stack className="video-item" spacing={2}>
                                                 <div className="thumbnail">
@@ -230,7 +230,7 @@ const View = (props) => {
                                         Assista a seguir
                                     </Typography>
                                     {
-                                        lives.slice(0, 4).map((z, i) => z?.link ? (
+                                        lives?.slice(0, 4).map((z, i) => z?.link ? (
                                             <Stack className="video-item" sx={{gap: "10px"}} direction="row"
                                                    alignItems="center" onClick={() => {
                                                 setAutoPlayUseEffectP(true);
@@ -256,7 +256,7 @@ const View = (props) => {
                         <CustomTabPanel value={value} index={2}>
                             <Stack sx={{gap: "24px"}} direction="row" className="flex-midia">
                                 {
-                                    institucional.length > 0 && (
+                                    institucional?.length > 0 && (
                                         <Stack className="flex-2">
                                             <Stack className="video-item" spacing={2}>
                                                 <div className="thumbnail">
@@ -286,7 +286,7 @@ const View = (props) => {
                                         Assista a seguir
                                     </Typography>
                                     {
-                                        institucional.slice(0, 4).map((z, i) => z?.link ? (
+                                        institucional?.slice(0, 4).map((z, i) => z?.link ? (
                                             <Stack className="video-item" sx={{gap: "10px"}} direction="row"
                                                    alignItems="center" onClick={() => {
                                                 setAutoPlayUseEffectP(true);

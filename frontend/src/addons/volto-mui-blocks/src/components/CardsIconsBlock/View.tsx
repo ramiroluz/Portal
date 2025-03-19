@@ -39,35 +39,40 @@ function a11yProps(index: number) {
 
 const View = (props) => {
     const {data, isEditMode, className, block, classes} = props;
-
-    console.log(data);
     const Image = config.getComponent('Image').component;
-
     const [value, setValue] = React.useState(0);
-
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
         setValue(newValue);
     };
     return (
-        <div className="stack py-32 cardsBlock w-100 background-color-cinza">
+        <div className="stack py-32 w-100">
             <div className="container">
-                <div className={data?.variacao ? "cards-flex row grid-cols-mb-1 stack gap-24 wrap grid-cols-2 type-2" : "cards-flex row stack gap-24 wrap grid-cols-4 grid-cols-mb-1"}>
+                <h2 className="fs-32 fw-600 text-center mb-0">
+                    {data?.title}
+                </h2>
+                {data?.subtitle && (
+                    <div className="mt-40">
+                        <p className="fs-18 color-gray mb-0 text-center ff-lato">{data?.subtitle}</p>
+                    </div>
+                )}
+
+                <div className="mt-40 grid-col-4 gap-16">
                     {data?.links?.map((z) =>
                         <Link to={z?.link?.length > 0 ? flattenToAppURL(z?.link[0].getURL) : ""} onClick={(e) => {
                             isEditMode ? e.preventDefault() : ""
-                        }} className="item-card card">
-                            <div className={data?.variacao ? "thumbnail border-right-none aspect-ratio-270-184" : "thumbnail"}>
+                        }} className="card-icon">
+                            <div className="flex flex-center">
                                 {
                                     z?.image && <Image
-                                        className={data?.variacao ? "border-right-none aspect-ratio-270-184" : ""}
+                                        className="max-w-72"
                                         loading="lazy"
                                         src={z?.image + "/@@images/image"}
                                     />
                                 }
                             </div>
                             <div className="info flex-between stack gap-16">
-                                <h3 className="mb-0">{z?.title}</h3>
-                                <span className="mt-0 fs-14 color-black text-left">{z?.subtitle}</span>
+                                <h3 className="mb-0 text-center color-white">{z?.title}</h3>
+                                <p className="mt-0 fs-14 color-black text-left ff-lato color-black px-16">{z?.subtitle}</p>
                             </div>
 
                         </Link>)}

@@ -16,7 +16,7 @@ const messages = defineMessages({
 
 export const Schema = (props) => {
   return {
-    title: props.intl.formatMessage(messages.cardsSubHomeBlock),
+    title: props.intl.formatMessage(messages.cadsIconsBlock),
     fieldsets: [
       {
         id: 'default',

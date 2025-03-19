@@ -11,5 +11,9 @@
 }
 
 .color-black {
-  color: black !important;
+  color: #212121 !important;
+}
+
+.color-gray {
+  color: var(--Greyish, #646E73);
 }
