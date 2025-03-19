@@ -12,7 +12,6 @@ const Image = config.getComponent({name: 'Image'}).component;
 const View = (props) => {
     const {data, isEditMode, className, block, classes} = props;
     const links = data?.links?.filter((z) => z?.link !== undefined) || [];
-    console.log(links);
     if (links)
         return (
             <div className="stack gap-24 flex-mb flex-column-mb">
