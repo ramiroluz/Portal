@@ -110,5 +110,4 @@ const View = (props) => {
     return (<>Carregando</>);
 };
 
-
 export default withBlockExtensions(View);

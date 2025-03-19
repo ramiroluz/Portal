@@ -31,8 +31,8 @@ const Footer = () => {
         </Stack>
         <Stack className={"footer-stack"}>
             <div className="container">
-                <div className="stack row flex-between gap-16 stack-footer">
-                    <Stack className="column min-w-224" sx={{gap: "17px"}}>
+                <div className="stack row flex-between gap-24 stack-footer">
+                    <Stack className="column min-w-224 pr-32" sx={{gap: "17px"}}>
                         <img src="/logo-footer.svg" alt="Logo CMC" className="max-w-150"/>
                         <Typography>
                             © 2025
@@ -48,204 +48,221 @@ const Footer = () => {
                                 <img src="/icons/facebook.svg" alt="Facebook da Câmara de Curitiba"/>
                             </a>
                             <a href="">
-                                <img src="/icons/linkedin.svg" alt="Linkedin da Câmara de Curitiba"/>
+                                <img src="/icons/twitter.svg" alt="Twitter da Câmara de Curitiba"/>
+                            </a>
+                            <a href="">
+                                <img src="/icons/youtube.svg" alt="Youtube da Câmara de Curitiba"/>
+                            </a>
+                            <a href="">
+                                <img src="/icons/discord.svg" alt="Discord da Câmara de Curitiba"/>
+                            </a>
+                            <a href="">
+                                <img src="/icons/spotify.svg" alt="Spotify da Câmara de Curitiba"/>
                             </a>
                         </Stack>
                     </Stack>
                     <Stack className="column a-menus" sx={{gap: "6px"}}>
-                        <h3 className="fs-16 fw-700 text-white">Institucional</h3>
+                        <h3 className="fs-16 fw-700 text-white">Atendimento</h3>
+                        <a href="">
+                            Avaliação de Satisfação
+                        </a>
+                        <a href="">
+                            Carta de Serviços
+                        </a>
                         <a href="">
                             Fale com a Câmara
-                        </a>
-                        <a href="">
-                            Agenda de Atividades
-                        </a>
-                        <a href="">
-                            Visite a CMC
-                        </a>
-                        <a href="">
-                            Visite a CMCEs
-                        </a>
-                        <a href="">
-                            Estrutura organizacional
-                        </a>
-                        <a href="">
-                            Mesa Diretora
-                        </a>
-                        <a href="">
-                            Corregedoria
-                        </a>
-                        <a href="">
-                            Escola do Legislativo
-                        </a>
-                        <a href="">
-                            Procuradoria da Mulher
-                        </a>
-                        <a href="">
-                            Concurso público
-                        </a>
-                        <a href="">
-                            Programa de Estágio
                         </a>
                         <a href="">
                             Ouvidoria
                         </a>
                         <a href="">
-                            Planejamento estratégico
+                            Procuradoria da Mulher
                         </a>
                         <a href="">
-                            Tour Virtual
+                            Sala da Defensoria
                         </a>
                         <a href="">
-                            Atendimento da Defensoria Pública
+                            Serviço de Informação ao Cidadão (SIC)
                         </a>
-                        <a href="" className="bold">
-                            Serviços Internos
+                        <a href="">
+                            Visite a Câmara
                         </a>
-                    </Stack>
 
-                    <Stack className="column a-menus" sx={{gap: "6px"}}>
-                        <h3 className="fs-16 fw-700 text-white">Transparência</h3>
+                        <h3 className="fs-16 fw-700 text-white mt-32">Serviços internos</h3>
                         <a href="">
-                            Portal da Transparência
+                            E-mail da Câmara
                         </a>
                         <a href="">
-                            Acesso à informação (SIC)
+                            Portal Recursos Humanos
                         </a>
                         <a href="">
-                            Perguntas frequentes
+                            Ramais Administrativos
                         </a>
                         <a href="">
-                            Receitas e despesas
+                            Registro de Frequência
                         </a>
                         <a href="">
-                            Servidores públicos
+                            Sistema de Almoxarifado
                         </a>
                         <a href="">
-                            Compras e licitações
+                            Sistema de Chamados
                         </a>
                         <a href="">
-                            Contas municipais
+                            SPA - Processo Administrativo
                         </a>
                         <a href="">
-                            Controladoria do Legislativo
+                            SPAE - Processo Eletrônico
                         </a>
                         <a href="">
-                            Prestação de contas
-                        </a>
-                        <a href="">
-                            CMC Explica
-                        </a>
-                        <a href="">
-                            LGPD
-                        </a>
-                        <a href="">
-                            Radar da Transparência pública
-                        </a>
-                    </Stack>
-
-                    <Stack className="column a-menus" sx={{gap: "6px"}}>
-                        <h3 className="fs-16 fw-700 text-white">Vereadores</h3>
-                        <a href="">
-                            Quem são
-                        </a>
-                        <a href="">
-                            Lideranças e blocos parlamentares
-                        </a>
-                        <a href="">
-                            Colégio de Líderes
-                        </a>
-                        <a href="">
-                            Frentes parlamentares
-                        </a>
-                        <a href="">
-                            Listas de presença
-                        </a>
-                        <a href="">
-                            Representação externa
-                        </a>
-                        <a href="">
-                            Eleições 2016
-                        </a>
-                        <a href="">
-                            Eleições 2020
+                            SPL - Vereadores
                         </a>
                     </Stack>
 
                     <Stack className="column a-menus" sx={{gap: "6px"}}>
                         <h3 className="fs-16 fw-700 text-white">Atividade Parlamentar</h3>
                         <a href="">
-                            Projetos de lei
+                            Agenda da Câmara
                         </a>
                         <a href="">
-                            Requerimentos
+                            Agora é Lei
                         </a>
                         <a href="">
-                            Comissões permanentes
+                            Audiências Públicas
                         </a>
                         <a href="">
-                            Comissões temporárias
+                            Comissões
                         </a>
                         <a href="">
-                            Conselho de ética e Decoro Parlamentar
+                            Conselho de Ética e Decoro Parlamentar
                         </a>
                         <a href="">
-                            Audiência públicas
+                            Painel de Atividades Legislativas
                         </a>
                         <a href="">
-                            Tribunas Livres
+                            Projetos de Lei e Requerimentos
                         </a>
                         <a href="">
-                            Sessões Solenes
+                            Sessões da Câmara
                         </a>
                         <a href="">
-                            Orçamento da Cidade
+                            Tribuna Livre
+                        </a>
+
+                        <h3 className="fs-16 fw-700 text-white">Vereadores</h3>
+                        <a href="">
+                            Conheça os Vereadores
                         </a>
                         <a href="">
-                            Legislação
+                            Corregedoria
                         </a>
                         <a href="">
-                            Agora é lei
+                            Frentes Parlamentares
                         </a>
                         <a href="">
-                            Banco de Ideias Legislativas
+                            Lideranças e Blocos Parlamentares
                         </a>
+                        <a href="">
+                            Mesa Diretora
+                        </a>
+                        <a href="">
+                            Participação em Conselhos
+                        </a>
+
                     </Stack>
 
                     <Stack className="column a-menus" sx={{gap: "6px"}}>
-                        <h3 className="fs-16 fw-700 text-white">Informação</h3>
+                        <h3 className="fs-16 fw-700 text-white">Comunicação</h3>
+                        <a href="">
+                            CMC Podcasts
+                        </a>
+                        <a href="">
+                            Fotos
+                        </a>
+                        <a href="">
+                            Histórias de Curitiba
+                        </a>
                         <a href="">
                             Notícias
                         </a>
                         <a href="">
-                            Curitiba Decide
+                            Projetos Especiais
                         </a>
                         <a href="">
-                            Mídias sociais
+                            Redes Sociais
                         </a>
                         <a href="">
-                            Assessoria de imprensa
+                            Sala de Imprensa
                         </a>
                         <a href="">
-                            Banco de imagens
+                            TV Câmara
+                        </a>
+
+                        <h3 className="fs-16 fw-700 text-white">Participe</h3>
+                        <a href="">
+                            Banco de Ideias Legislativas
                         </a>
                         <a href="">
-                            Projetos especiais
+                            Consultas Públicas
                         </a>
                         <a href="">
-                            Nossa Memória
+                            Parlamento Jovem
                         </a>
                         <a href="">
-                            Dicionário do Legislativo
+                            WhatsApp da Câmara
+                        </a>
+                    </Stack>
+
+                    <Stack className="column a-menus" sx={{gap: "6px"}}>
+                        <h3 className="fs-16 fw-700 text-white">Institucional</h3>
+                        <a href="">
+                            Administração da Câmara
                         </a>
                         <a href="">
-                            Carta de Serviços
+                            Concurso Público
                         </a>
                         <a href="">
-                            Avaliações de satisfação
+                            Conheça a Câmara
                         </a>
                         <a href="">
-                            Painel de atividades legislativas
+                            Escola do Legislativo
+                        </a>
+                        <a href="">
+                            Instruções Normativas
+                        </a>
+                        <a href="">
+                            Programa de Estágio
+                        </a>
+                        <a href="">
+                            Servidores da Câmara
+                        </a>
+
+                        <h3 className="fs-16 fw-700 text-white">Transparência</h3>
+                        <a href="">
+                            Controladoria do Legislativo
+                        </a>
+                        <a href="">
+                            Julgamento das Contas da Prefeitura
+                        </a>
+                        <a href="">
+                            Leis de Curitiba e Atos da Câmara
+                        </a>
+                        <a href="">
+                            Orçamento de Curitiba
+                        </a>
+                        <a href="">
+                            Perguntas Frequentes
+                        </a>
+                        <a href="">
+                            Prestação de Contas da Câmara
+                        </a>
+                        <a href="">
+                            Política de Proteção de Dados (LGPD)
+                        </a>
+                        <a href="">
+                            Portal da Transparência
+                        </a>
+                        <a href="">
+                            Radar da Transparência Pública
                         </a>
                     </Stack>
                 </div>

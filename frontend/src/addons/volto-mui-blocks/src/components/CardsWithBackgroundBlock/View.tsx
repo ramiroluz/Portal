@@ -46,62 +46,61 @@ const View = (props) => {
         setValue(newValue);
     };
     return (
-        <Stack sx={{py: "32px"}} className="cardsBlock">
-            <Typography variant="h2">Nossa Memória</Typography>
-            <Typography>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            </Typography>
-            <Stack sx={{gap: "32px", mt: "40px"}} direction="row">
-                <Card className="item-card back">
-                    <div className="thumbnail">
-                        <img src="/images/institucional/item-1.png" alt=""/>
+        <div className="cardsBlockBackground py-32 w-100-w background-white max-w-100">
+            <div className="container">
+                <h2 className="fs-24 color-dark text-center">Histórias de Curitiba</h2>
+                <p className="fs-18 color-gray mb-0 text-center ff-lato">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua.
+                </p>
+                <div className="max-w-mobile-100vw">
+                    <div className="stack row mt-40 gap-32 grid-cols-3 overflow-auto-mobile child-75vw">
+                    <div className="item-card back card card-default position-relative">
+                        <div className="thumbnail">
+                            <img src="/images/memoria/nossa-memoria-1.png" alt="" className="aspect-ratio-358-537"/>
+                        </div>
+                        <div className="content stack flex-between gap-24 flex-column ">
+                            <h3 className="color-white ff-lato fs-20 fw-400">Especial de Halloween: caça às bruxas em
+                                Curitiba é tema do CMC Podcasts</h3>
+                            <Button>
+                                Veja mais
+                                <img src="/icons/ver-mais-background.svg" alt="Ver mais"/>
+                            </Button>
+                        </div>
                     </div>
-                    <Stack className="info" sx={{gap: "24px"}} justifyContent="space-between">
-                        <Typography variant="h3">Legislação e Projetos de Lei</Typography>
-                        <Button>
-                            Veja mais
-                            <img src="/icons/ver-mais.svg" alt="Ver mais"/>
-                        </Button>
-                    </Stack>
-                </Card>
-                <Card className="item-card">
-                    <div className="thumbnail">
-                        <img src="/images/institucional/item-2.png" alt=""/>
+                    <div className="item-card back card card-default position-relative">
+                        <div className="thumbnail">
+                            <img src="/images/memoria/nossa-memoria-2.png" alt="" className="aspect-ratio-358-537"/>
+                        </div>
+                        <div className="content stack flex-between gap-24 flex-column ">
+                            <h3 className="color-white ff-lato fs-20 fw-400">Participação popular na política I: três
+                                marcos decisivos na história de Curitiba</h3>
+                            <Button>
+                                Veja mais
+                                <img src="/icons/ver-mais-background.svg" alt="Ver mais"/>
+                            </Button>
+                        </div>
                     </div>
-                    <Stack className="info" sx={{gap: "24px"}} justifyContent="space-between">
-                        <Typography variant="h3">Institucional</Typography>
-                        <Button>
-                            Veja mais
-                            <img src="/icons/ver-mais.svg" alt="Ver mais"/>
-                        </Button>
-                    </Stack>
-                </Card>
-                <Card className="item-card">
-                    <div className="thumbnail">
-                        <img src="/images/institucional/item-3.png" alt=""/>
+                    <div className="item-card back card card-default position-relative">
+                        <div className="thumbnail">
+                            <img src="/images/memoria/nossa-memoria-2.png" alt="" className="aspect-ratio-358-537"/>
+                        </div>
+                        <div className="content stack flex-between gap-24 flex-column ">
+                            <h3 className="color-white ff-lato fs-20 fw-400">Participação popular na política II: a luta
+                                pela Emancipação do Paraná</h3>
+                            <Button>
+                                Veja mais
+                                <img src="/icons/ver-mais-background.svg" alt="Ver mais"/>
+                            </Button>
+                        </div>
                     </div>
-                    <Stack className="info" sx={{gap: "24px"}} justifyContent="space-between">
-                        <Typography variant="h3">Ordem do dia</Typography>
-                        <Button>
-                            Veja mais
-                            <img src="/icons/ver-mais.svg" alt="Ver mais"/>
-                        </Button>
-                    </Stack>
-                </Card>
-                <Card className="item-card">
-                    <div className="thumbnail">
-                        <img src="/images/institucional/item-4.png" alt=""/>
-                    </div>
-                    <Stack className="info" sx={{gap: "24px"}} justifyContent="space-between">
-                        <Typography variant="h3">Comissões</Typography>
-                        <Button>
-                            Veja mais
-                            <img src="/icons/ver-mais.svg" alt="Ver mais"/>
-                        </Button>
-                    </Stack>
-                </Card>
-            </Stack>
-        </Stack>
+                </div>
+                </div>
+                <div className="flex flex-center mt-40 mb-16">
+                    <a href="" className="button button-secondary">Visite nossas memórias</a>
+                </div>
+            </div>
+        </div>
     )
 };
 

@@ -133,7 +133,7 @@ const View = (props) => {
                                 </Button>
                                 <Button className={value === 1 ? "tab-top act" : "tab-top"} onClick={() => setValue(1)}>
                                     <img src="/icons/podcast.svg" alt=""/>
-                                    Lives
+                                    Ao Vivo
                                 </Button>
                                 <Button className={value === 2 ? "tab-top act" : "tab-top"} onClick={() => setValue(2)}>
                                     <img src="/icons/lives.svg" alt=""/>
@@ -157,9 +157,6 @@ const View = (props) => {
                                                     </div>*/}
                                                 </div>
                                                 <h3>{podcasts[podcastSelect]?.title}</h3>
-                                                <p className="fs-14">
-                                                    {podcasts[podcastSelect]?.description}
-                                                </p>
                                             </Stack>
                                         </Stack>
                                     )
@@ -174,7 +171,7 @@ const View = (props) => {
                                         Assista a seguir
                                     </Typography>
                                     {
-                                        podcasts?.slice(0, 4).map((z, i) => z?.link ? (
+                                        podcasts?.slice(0, 3).map((z, i) => z?.link ? (
                                             <Stack className="video-item" sx={{gap: "10px"}} direction="row"
                                                    alignItems="center" onClick={() => {
                                                 setAutoPlayUseEffectP(true);
@@ -213,9 +210,6 @@ const View = (props) => {
                                                     </div>*/}
                                                 </div>
                                                 <h3>{lives[livesSelect]?.title}</h3>
-                                                <p className="fs-14">
-                                                    {lives[livesSelect]?.description}
-                                                </p>
                                             </Stack>
                                         </Stack>
                                     )
@@ -230,7 +224,7 @@ const View = (props) => {
                                         Assista a seguir
                                     </Typography>
                                     {
-                                        lives?.slice(0, 4).map((z, i) => z?.link ? (
+                                        lives?.slice(0, 3).map((z, i) => z?.link ? (
                                             <Stack className="video-item" sx={{gap: "10px"}} direction="row"
                                                    alignItems="center" onClick={() => {
                                                 setAutoPlayUseEffectP(true);
@@ -269,9 +263,6 @@ const View = (props) => {
                                                     </div>*/}
                                                 </div>
                                                 <h3>{institucional[podcastSelect]?.title}</h3>
-                                                <p className="fs-14">
-                                                    {institucional[podcastSelect]?.description}
-                                                </p>
                                             </Stack>
                                         </Stack>
                                     )
@@ -286,7 +277,7 @@ const View = (props) => {
                                         Assista a seguir
                                     </Typography>
                                     {
-                                        institucional?.slice(0, 4).map((z, i) => z?.link ? (
+                                        institucional?.slice(0, 3).map((z, i) => z?.link ? (
                                             <Stack className="video-item" sx={{gap: "10px"}} direction="row"
                                                    alignItems="center" onClick={() => {
                                                 setAutoPlayUseEffectP(true);

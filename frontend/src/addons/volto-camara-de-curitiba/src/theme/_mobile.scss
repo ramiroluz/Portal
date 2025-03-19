@@ -109,10 +109,11 @@
   }
   .overflow-auto-mobile {
     overflow: auto;
-    display: flex;
+    display: flex !important;
     width: calc(100% + 40px);
     position: relative;
     padding-left: 20px;
+    justify-content: flex-start !important;
     left: -20px;
     padding-right: 20px;
 
@@ -184,13 +185,24 @@
     }
 
     > *:nth-child(5) {
-      order:6;
+      order: 6;
       width: 100%;
       max-width: 100%;
     }
+
     > *:first-child {
       width: 100%;
     }
 
+  }
+
+  .max-w-mobile-100vw {
+    max-width: calc(100vw - 40px) !important;
+  }
+
+  .overflow-auto-mobile.child-75vw {
+    > * {
+      min-width: 75vw !important;
+    }
   }
 }

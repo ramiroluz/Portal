@@ -12,9 +12,9 @@ const View = (props) => {
     const {data, isEditMode, className, block, classes} = props;
     const Image = config.getComponent('Image').component;
     return (
-        <section className="stack gap-24 max-w-100 py-32">
+        <section className="stack gap-24 max-w-100 py-48">
             <div className="container w-100-w">
-                <h2 className="title-back fw-600 flex flex-between w-100">
+                <h2 className="title-back fw-600 flex flex-between w-100 align-items-center">
                     O Que Vem por Aí
                     <a className="ver-mais-flex">
                         Ver todos
@@ -27,7 +27,7 @@ const View = (props) => {
                     </a>
                 </h2>
                 <div className="mt-40">
-                    <div className="grid-col-3 gap-32">
+                    <div className="grid-col-3 gap-32 overflow-auto-mobile child-75vw">
                         <div className="card-default card">
                             <div className="position-relative">
                                 <img src="/images/agenda/agenda-1.jpg" className="w-100 aspect-ratio-16-9"/>

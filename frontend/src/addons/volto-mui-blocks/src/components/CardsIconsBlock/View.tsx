@@ -14,6 +14,7 @@ interface TabPanelProps {
     index: number;
     value: number;
 }
+
 function CustomTabPanel(props: TabPanelProps) {
     const {children, value, index, ...other} = props;
 
@@ -56,26 +57,28 @@ const View = (props) => {
                     </div>
                 )}
 
-                <div className="mt-40 grid-col-4 gap-16">
-                    {data?.links?.map((z) =>
-                        <Link to={z?.link?.length > 0 ? flattenToAppURL(z?.link[0].getURL) : ""} onClick={(e) => {
-                            isEditMode ? e.preventDefault() : ""
-                        }} className="card-icon">
-                            <div className="flex flex-center">
-                                {
-                                    z?.image && <Image
-                                        className="max-w-72"
-                                        loading="lazy"
-                                        src={z?.image + "/@@images/image"}
-                                    />
-                                }
-                            </div>
-                            <div className="info flex-between stack gap-16">
-                                <h3 className="mb-0 text-center color-white">{z?.title}</h3>
-                                <p className="mt-0 fs-14 color-black text-left ff-lato color-black px-16">{z?.subtitle}</p>
-                            </div>
+                <div className="max-w-mobile-100vw">
+                    <div className="mt-40 grid-col-4 gap-16 overflow-auto-mobile child-75vw">
+                        {data?.links?.map((z) =>
+                            <Link to={z?.link?.length > 0 ? flattenToAppURL(z?.link[0].getURL) : ""} onClick={(e) => {
+                                isEditMode ? e.preventDefault() : ""
+                            }} className="card-icon">
+                                <div className="flex flex-center">
+                                    {
+                                        z?.image && <Image
+                                            className="max-w-72"
+                                            loading="lazy"
+                                            src={z?.image + "/@@images/image"}
+                                        />
+                                    }
+                                </div>
+                                <div className="info flex-between stack gap-16">
+                                    <h3 className="mb-0 text-center color-white">{z?.title}</h3>
+                                    <p className="mt-0 fs-14 color-black text-left ff-lato color-black px-16">{z?.subtitle}</p>
+                                </div>
 
-                        </Link>)}
+                            </Link>)}
+                    </div>
                 </div>
             </div>
         </div>
