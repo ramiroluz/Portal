@@ -40,7 +40,7 @@ function getYouTubeThumbnail(url) {
 const View = (props) => {
     const {data, isEditMode, className, block, classes} = props;
     return (
-        <Stack>
+        <Stack className="mb-32">
                 {(isEditMode) && (data?.youtube ? <img src={getYouTubeThumbnail(data?.youtube)} className="iframe" /> : <Typography>Insira a URL ao vivo</Typography>)}
                 {(!isEditMode && data?.youtube) && <iframe frameborder="0" src={createYouTubeEmbed(data?.youtube)} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" autoplay />}
         </Stack>

@@ -45,7 +45,7 @@ const View = (props) => {
         setValue(newValue);
     };
     return (
-        <div className="stack py-32 w-100">
+        <div className="stack py-48 w-100">
             <div className="container">
                 <h2 className="fs-32 fw-600 text-center mb-0">
                     {data?.title}
