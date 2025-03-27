@@ -19,42 +19,10 @@ class Header extends React.Component {
 
     componentDidMount() {
         this.setState({isClient: true}); // Agora temos acesso ao `window`
-        this.handleScroll();
-        window.addEventListener("scroll", this.handleScroll);
     }
 
     componentWillUnmount() {
-        window.removeEventListener("scroll", this.handleScroll);
     }
-
-    handleScroll = () => {
-        if (typeof window === "undefined") return; // Evita erro no SSR
-
-        const isMobile = window.innerWidth <= 768;
-        if (!isMobile) return;
-
-        const currentScrollY = window.scrollY;
-        const headerTop = document.querySelector(".container-base.header");
-        const mobileMenu = document.querySelector(".menu-bottom-mobile");
-
-        if (!headerTop || !mobileMenu) return; // Evita erro se os elementos não existirem
-
-        // Se estiver no topo ou se tiver rolado pelo menos 300px, remove o fadeOut
-        if (currentScrollY <= 0 || currentScrollY <= 300) {
-            //headerTop.classList.remove("fadeOut");
-            mobileMenu.classList.remove("fadeOut");
-        } else if (currentScrollY > this.lastScrollY) {
-            // Se estiver rolando para baixo entre 0 e 300px, adiciona o fadeOut
-            //headerTop.classList.add("fadeOut");
-            mobileMenu.classList.add("fadeOut");
-        } else {
-            // Se estiver rolando para cima entre 0 e 300px, remove o fadeOut
-            //headerTop.classList.remove("fadeOut");
-            mobileMenu.classList.remove("fadeOut");
-        }
-
-        this.lastScrollY = currentScrollY;
-    };
 
 
     render() {
@@ -116,7 +84,7 @@ class Header extends React.Component {
                                 <img src="/icons/menu-mobile.svg" alt="Menu mobile"/>
                             </a>
                             <div className="links-menu row align-items-center gap-8 d-mb-none stack">
-                                <p className="fs-16 fw-600 text-white mb-0">Destaque:</p>
+                                <p className="fs-16 fw-600 text-white mb-0">Destaques:</p>
                                 <Link to="/">Fale com a Câmara</Link>
                                 <svg width="2" height="13" viewBox="0 0 2 13" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">

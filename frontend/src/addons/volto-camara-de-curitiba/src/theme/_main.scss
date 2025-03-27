@@ -1164,4 +1164,26 @@ figure {
   flex: 1 1 auto;
 }
 
+.siteroot .blocks-group-wrapper > .bannerCarousel:first-child {
+  padding-top: 0px;
+}
+
+.aspect-ratio-1116-200 {
+  aspect-ratio: 1116 / 200;
+  object-fit: cover;
+}
+
+.react-multiple-carousel__arrow {
+  background: rgb(62 138 142 / 70%)
+}
+
+.react-multi-carousel-dot button {
+  background:transparent;
+  border-color:white;
+}
+
+.react-multi-carousel-dot.react-multi-carousel-dot--active button {
+  background: var(--primary-color);
+}
+
 @import "mobile";
