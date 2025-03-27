@@ -20,9 +20,17 @@ const View = (props) => {
                         items.map((item, index) => (
                             <Link key={index} className="item card-default py-24 px-24"
                                   to={item?.url}>
-                                <div className="flex gap-16 align-items-center flex-between flex-mb flex-column-mb">
-                                    <div className="content stack gap-8">
-                                        <h3 className="title-24">{item?.title}</h3>
+                                <div className="flex gap-32 align-items-center flex-mb flex-column-mb">
+                                    <div className="thumbnail m-w-218">
+                                        <img src={flattenToAppURL(item.url + "/" + item.image_scales?.image[0]?.download) || "/images/news/default.png"} alt=""/>
+                                    </div>
+                                    <div className="content stack flex-1">
+                                        <div className="flex flex-start">
+                                            <span className="tag-color inline-block">Sem categoria</span>
+                                        </div>
+                                        <div className="mt-18">
+                                            <h3 className="title-24 mt-0">{item?.title}</h3>
+                                        </div>
                                         {/*<div>*/}
                                         {/*  <span className="tag-color inline-block">*/}
                                         {/*    {item?.category}*/}
@@ -32,13 +40,12 @@ const View = (props) => {
                                         {/*  <strong>Tags: </strong>*/}
                                         {/*  {item?.tags?.join(" ")}*/}
                                         {/*</p>*/}
-                                        <span href={item?.link} className="leia-mais">
-                      Leia mais
-                      <img src="/icons/leia-mais.svg" alt=""/>
-                    </span>
-                                    </div>
-                                    <div className="thumbnail m-w-218">
-                                        <img src={flattenToAppURL(item.url + "/" + item.image_scales?.image[0]?.download) || "/images/news/default.png"} alt=""/>
+                                        <div className="mt-14">
+                                            <span href={item?.link} className="leia-mais">
+                                              Leia mais
+                                              <img src="/icons/leia-mais.svg" alt=""/>
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
                             </Link>

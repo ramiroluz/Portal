@@ -1186,4 +1186,10 @@ figure {
   background: var(--primary-color);
 }
 
+.section-noticias {
+  .category-block {
+    padding-bottom: 0px;
+  }
+}
+
 @import "mobile";
