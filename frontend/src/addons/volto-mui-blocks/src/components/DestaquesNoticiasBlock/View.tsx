@@ -30,7 +30,7 @@ const View = (props) => {
                             {links.slice(0,1).map((link, index) => (
                                 <Link key={index} className="card-default px-24 py-24"
                                       to={link?.link[0]["getPath"].replace("/Plone/", "")}>
-                                    <div className="thumbnail mt-16">
+                                    <div className="thumbnail">
                                         <img
                                             src={flattenToAppURL(
                                                 link?.link[0]["getURL"] +
