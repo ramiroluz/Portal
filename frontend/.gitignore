@@ -98,3 +98,4 @@ src/addons/*
 !src/addons/volto-columns-block
 !src/addons/volto-mui-blocks
 !src/addons/volto-mui-banners
+!src/addons/volto-dropdownmenu

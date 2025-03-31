@@ -1,0 +1,130 @@
+[
+  {
+    "rootPath": "/",
+    "items": [
+      {
+        "title": "Prima voce",
+        "visible": true,
+        "mode": "simpleLink",
+        "linkUrl": ["9fb9f886b8744dc7acf817202848bf37"],
+        "blocks_layout": { "items": ["32de9aba-690a-42fd-809c-96f51f5459f3"] },
+        "blocks": {
+          "32de9aba-690a-42fd-809c-96f51f5459f3": { "@type": "text" }
+        }
+      },
+      {
+        "title": "Notizie",
+        "visible": true,
+        "mode": "dropdown",
+        "linkUrl": [],
+        "blocks_layout": {
+          "items": [
+            "3ca8a082-787f-4484-a337-a6755b5dfd39",
+            "7715cd4f-3daa-4cc8-a1e2-d90b31492593",
+            "e4efe4b4-83a8-491e-8957-df835548be16"
+          ]
+        },
+        "blocks": {
+          "3ca8a082-787f-4484-a337-a6755b5dfd39": {
+            "@type": "text",
+            "text": {
+              "blocks": [
+                {
+                  "key": "el74l",
+                  "text": "Quisque molestie dapibus libero non pellentesque.",
+                  "type": "unstyled",
+                  "depth": 0,
+                  "inlineStyleRanges": [],
+                  "entityRanges": [],
+                  "data": {}
+                }
+              ],
+              "entityMap": {}
+            }
+          },
+          "7715cd4f-3daa-4cc8-a1e2-d90b31492593": {
+            "@type": "listing",
+            "limit": "3",
+            "b_size": "3"
+          },
+          "e4efe4b4-83a8-491e-8957-df835548be16": { "@type": "text" }
+        },
+        "navigationRoot": [
+          "49be87c9a77640329ae4ec2031585cc1",
+          "915c8d9663f44297927f0f421bf6a381"
+        ],
+        "showMoreLink": ["49be87c9a77640329ae4ec2031585cc1"],
+        "showMoreText": "Tutte le notizie"
+      },
+      {
+        "title": "New 2",
+        "visible": true,
+        "mode": "dropdown",
+        "linkUrl": [],
+        "blocks_layout": {
+          "items": [
+            "099d97fd-2674-41d7-af4c-afafc35421fd",
+            "6b467609-dfde-4068-a3e0-87e962a0fb56",
+            "2cb27b43-eaae-49d7-823e-741fbcec638b"
+          ]
+        },
+        "blocks": {
+          "099d97fd-2674-41d7-af4c-afafc35421fd": {
+            "@type": "text",
+            "text": {
+              "blocks": [
+                {
+                  "key": "b4ijl",
+                  "text": "Maecenas posuere sem odio, eu molestie justo luctus sed.",
+                  "type": "unstyled",
+                  "depth": 0,
+                  "inlineStyleRanges": [],
+                  "entityRanges": [],
+                  "data": {}
+                }
+              ],
+              "entityMap": {}
+            }
+          },
+          "6b467609-dfde-4068-a3e0-87e962a0fb56": {
+            "@type": "text",
+            "text": {
+              "blocks": [
+                {
+                  "key": "fvr28",
+                  "text": "Quisque pulvinar, arcu ac posuere sodales, augue risus accumsan odio, eleifend tincidunt purus enim et lectus.",
+                  "type": "unstyled",
+                  "depth": 0,
+                  "inlineStyleRanges": [],
+                  "entityRanges": [],
+                  "data": {}
+                }
+              ],
+              "entityMap": {}
+            }
+          },
+          "2cb27b43-eaae-49d7-823e-741fbcec638b": {
+            "@type": "text",
+            "text": {
+              "blocks": [
+                {
+                  "key": "c4ef",
+                  "text": "Nullam blandit ac nisi ac bibendum.",
+                  "type": "unstyled",
+                  "depth": 0,
+                  "inlineStyleRanges": [],
+                  "entityRanges": [],
+                  "data": {}
+                }
+              ],
+              "entityMap": {}
+            }
+          }
+        },
+        "navigationRoot": ["49be87c9a77640329ae4ec2031585cc1"],
+        "showMoreLink": ["915c8d9663f44297927f0f421bf6a381"],
+        "showMoreText": "Tutti gli eventi"
+      }
+    ]
+  }
+]
