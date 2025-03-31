@@ -1203,7 +1203,7 @@ figure {
 }
 
 .z-999 {
-  z-index: 999;
+  z-index: 99;
 }
 
 .position-relative {
@@ -1221,7 +1221,7 @@ figure {
   top: 85px;
   left: 0px;
   width: 100%;
-
+  box-shadow: 0px 40px 35px 0px #00000040;
   .content-menu {
     padding: 16px 0px 32px;
   }

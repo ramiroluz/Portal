@@ -9,7 +9,9 @@ import ExposurePlusIcon from "./Icons/ExposurePlusIcon";
 import SignLanguageOutlinedIcon from "@mui/icons-material/SignLanguageOutlined";
 import SearchBar from "./SearchBar";
 import LoginBar from "./LoginBar";
-
+import PropTypes from "prop-types";
+import Destaques from "../../../../../components/DropdownMenu/components/Destaques";
+import {flattenToAppURL} from "@plone/volto/helpers";
 
 const menuData = [
     {
@@ -114,11 +116,16 @@ const menuData = [
     },
 ];
 
-const Header = () => {
+const Header = (props) => {
+    console.log("props", props)
     const [act, setAct] = useState(false);
     const [activeMenu, setActiveMenu] = useState(menuData[0]);
     const menuRef = useRef(null);
     const buttonRef = useRef(null);
+
+    const menuHeader = Destaques("/destaques", "");
+
+    console.log(menuHeader);
 
     // Fecha o menu se clicar fora
     useEffect(() => {
@@ -193,22 +200,24 @@ const Header = () => {
                         </a>
                         <div className="links-menu row align-items-center gap-8 d-mb-none stack">
                             <p className="fs-16 fw-600 text-white mb-0">Destaques:</p>
-                            <Link to="/">Fale com a Câmara</Link>
-                            <svg width="2" height="13" viewBox="0 0 2 13" fill="none"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1.728 0.356445V12.3564H0.936V0.356445H1.728Z" fill="white"/>
-                            </svg>
-                            <Link to="/">Portal da Transparência</Link>
-                            <svg width="2" height="13" viewBox="0 0 2 13" fill="none"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1.728 0.356445V12.3564H0.936V0.356445H1.728Z" fill="white"/>
-                            </svg>
-                            <Link to="/">Colégio de Líderes</Link>
-                            <svg width="2" height="13" viewBox="0 0 2 13" fill="none"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1.728 0.356445V12.3564H0.936V0.356445H1.728Z" fill="white"/>
-                            </svg>
-                            <Link to="/">Eleições 2020</Link>
+                            {
+                                menuHeader.map((z, i) => (
+                                    <>
+                                        {
+                                            i != 0 && <svg width="2" height="13" viewBox="0 0 2 13" fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M1.728 0.356445V12.3564H0.936V0.356445H1.728Z" fill="white"/>
+                                            </svg>
+                                        }
+                                        {
+                                            z.mode === 'simpleLink' && <Link to={flattenToAppURL(z.linkUrl?.[0]?.['@id'])} key={i} title={z?.title}>{z.title}</Link>
+                                        }
+                                        {
+                                            z.mode === 'linkExternal' && <a href={z?.link_external} target="_blank" title={z?.title} key={i}>{z.title}</a>
+                                        }
+                                    </>
+                                ))
+                            }
                         </div>
                     </div>
                 </div>
@@ -305,3 +314,14 @@ const Header = () => {
 };
 
 export default Header;
+
+Header.propTypes = {
+    token: PropTypes.string,
+    pathname: PropTypes.string.isRequired,
+    content: PropTypes.objectOf(PropTypes.any),
+};
+
+Header.defaultProps = {
+    token: null,
+    content: null,
+};

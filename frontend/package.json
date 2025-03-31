@@ -28,11 +28,13 @@
   },
   "workspaces": [
     "src/addons/volto-camara-de-curitiba",
-    "src/addons/volto-mui-blocks"
+    "src/addons/volto-mui-blocks",
+    "src/addons/volto-dropdownmenu"
   ],
   "addons": [
     "volto-camara-de-curitiba",
-    "volto-mui-blocks"
+    "volto-mui-blocks",
+    "volto-dropdownmenu"
   ],
   "jest": {
     "modulePathIgnorePatterns": [
@@ -300,6 +302,10 @@
     "webpack-node-externals": "3.0.0",
     "why": "0.6.2"
   },
+  "customizationPaths": [
+    "src/customizations",
+    "src/addons/volto-dropdownmenu/src/customizations"
+  ],
   "resolutions": {
     "@pmmmwh/react-refresh-webpack-plugin": "0.5.11",
     "react-error-overlay": "6.0.9",

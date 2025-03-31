@@ -1,7 +1,7 @@
 import {CategoriaView} from "./components";
 import VereadoresListView from "./components/VereadoresView/VereadoresListView";
 import VereadorItemView from "./components/VereadoresView/VereadorItemView";
-
+import MyMenuConfigurationForm from "./components/MyMenuConfigurationForm";
 const applyConfig = (config) => {
   config.settings = {
     ...config.settings,
