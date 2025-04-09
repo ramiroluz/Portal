@@ -36,6 +36,10 @@ import CadsIconsBlockEdit from "./components/CardsIconsBlock/Edit";
 import CarouselBlockView from "./components/CarouselBlock/View";
 import CarouselBlockEdit from "./components/CarouselBlock/Edit";
 
+import HomeNewsBlockView from "./components/HomeNewsBlock/View";
+import HomeNewsBlockEdit from "./components/HomeNewsBlock/Edit";
+
+
 const blockDefinitions = {
   gridMuiBlock: { title: "Grid View", view: View, edit: GridBlockEdit },
   liveBlock: { title: "Ao vivo", view: LiveBlockView, edit: LiveBlockEdit },
@@ -54,6 +58,7 @@ const blockDefinitions = {
   cardsSubHomeBlock: { title: "Cards da SubHomes", view: CardsSubHomesBlockView, edit: CardsSubHomesBlockEdit },
   cadsIconsBlock: { title: "Cards com ícones", view: CadsIconsBlockView, edit: CadsIconsBlockEdit },
   carouselBlock: { title: "Carousel", view: CarouselBlockView, edit: CarouselBlockEdit },
+  homeNewsBlock: { title: "Notícias da Home", view: HomeNewsBlockView, edit: HomeNewsBlockEdit },
 };
 
 const applyConfig = (config) => {

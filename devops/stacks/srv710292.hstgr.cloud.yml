@@ -214,6 +214,7 @@ services:
 
 volumes:
   frontend-data: {}  # Definindo um volume nomeado
+  backend-data: {}  # Definindo um volume nomeado
   vol-traefik-certs: {}
   vol-site-data:
     driver_opts:

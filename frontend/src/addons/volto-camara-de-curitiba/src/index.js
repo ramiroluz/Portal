@@ -22,10 +22,37 @@ const applyConfig = (config) => {
     },
   ];
 
-  console.log(config);
-
+  config.blocks.initialBlocks = {
+    'News Item': [
+      { '@type': 'title' },
+      {
+        "@type": "slate",
+        "plaintext": "Author",
+        "cssClass" : "Class",
+        "styles": {
+        },
+        "value": [
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "text": "Author",
+                    "cssClass" : "Class",
+                  }
+                ],
+                "type": "em",
+                "cssClass" : "Class",
+              },
+            ],
+            "cssClass" : "Class",
+            "type": "p"
+          }
+        ]
+      },
+    ],
+  };
   return config;
-
 };
 
 export default applyConfig;

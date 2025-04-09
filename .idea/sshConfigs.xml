@@ -3,7 +3,6 @@
   <component name="SshConfigs">
     <configs>
       <sshConfig authType="PASSWORD" host="154.38.171.29" id="377e4564-bcc3-45a8-ae4d-7628a9d0361a" port="22" nameFormat="DESCRIPTIVE" username="root" useOpenSSHConfig="true" />
-      <sshConfig authType="PASSWORD" host="srv710292.hstgr.cloud" id="da864ebf-3d02-4cd5-b4ef-fb250786788e" port="22" nameFormat="DESCRIPTIVE" username="root" useOpenSSHConfig="true" />
     </configs>
   </component>
 </project>

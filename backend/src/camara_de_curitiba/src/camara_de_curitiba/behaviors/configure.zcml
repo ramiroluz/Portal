@@ -3,4 +3,13 @@
     xmlns:plone="http://namespaces.plone.org/plone"
     >
 
+  <plone:behavior
+      title="Vereadores Settings"
+      description="Configurações para o tipo Vereadores"
+      provides=".interfaces.IVereadoresSettings"
+      for="plone.dexterity.interfaces.IDexterityContent"
+      factory=".behaviors.VereadoresSettings"
+      marker=".interfaces.IVereadoresSettingsMarker"
+  />
 </configure>
+

@@ -2,4 +2,4 @@
 
 zope.testrunner
 flake8-pyproject
-collective.volto.dropdownmenu
+

@@ -1356,4 +1356,84 @@ figure {
   justify-content: flex-end;
 }
 
+.news-featured + .bannerCarousel {
+  padding-top: 32px;
+  padding-bottom: 0px;
+}
+
+.news-featured + .bannerCarousel + .home-news-block {
+  padding-top: 32px;
+}
+.legislacoes h2 {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color:#3E8A8E;
+}
+
+.legislacoes .sd {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}
+
+.legislacoes .position-relative {
+
+}
+
+.legislacoes select {
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCA0NCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Ik0xOSA5TDEyLjc4MDkgMTQuMzMwNkMxMi4zMzE2IDE0LjcxNTggMTEuNjY4NCAxNC43MTU4IDExLjIxOTEgMTQuMzMwNkw1IDkiIHN0cm9rZT0iIzRENEQ0RCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K);
+  background-repeat: no-repeat;
+  background-position: center right;
+  border: 1px solid #BDBDBD;
+  border-radius: 8px;
+  font-weight: 400;
+  font-size: 16px;
+  padding: 16px 20px;
+  appearance: none;
+  width: 100%;
+  line-height: 24px;
+  letter-spacing: 0%;
+}
+
+.legislacoes, .projetosdelei, .other-blocks-sd {
+  padding: 32px;
+  border: 1px solid #7BC2C5;
+  background-color: #F2F9F9;
+  border-radius: 18px;
+  max-width: 813px;
+  margin: 0px auto 24px auto;
+}
+
+.other-blocks-sd {
+  margin-top: 24px;
+}
+
+.max-358 {
+  max-width: 358px;
+}
+
+.other-blocks-sd h2 {
+  font-weight: 600;
+  letter-spacing: 0%;
+  color:#3E8A8E;
+  line-height: normal;
+}
+
+.section-vereadores main {
+  background-color: white;
+}
+
+.projetosdelei {
+  margin-top: 16px !important;
+}
+
+.max-w-250 {
+  max-width: 250px;
+}
+
+.content-single {
+  width: 100%;
+}
 @import "mobile";

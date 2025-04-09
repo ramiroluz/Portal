@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {Container, Header} from 'semantic-ui-react';
 import {useSelector} from 'react-redux';
 import {getYouTubeEmbedSrc} from "../../utils/Utils";
+import {Button} from "@mui/material";
 
 const VereadorItemView = (props) => {
   const content = useSelector((state) => state.content.data);
@@ -25,7 +26,7 @@ const VereadorItemView = (props) => {
           </div>
         </div>
       </div>
-      <div className="w-100 background-color-cinza py-32">
+      <div className="w-100 background-color-cinza-soft py-32">
         <div className="container">
           <div className="grid-vereador gap-32">
             <div className="card-default py-24 px-24 px-mb-16 py-mb-16">
@@ -121,6 +122,23 @@ const VereadorItemView = (props) => {
                   » Com informações cedidas pelo mandato parlamentar.
                 </strong>
               </p>
+
+              <div className="mt-16 fs-16 fw-400 fs-lato space-16 child lh-normal context">
+                <div className="flex gap-8 align-items-center">
+                  <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 10.1533H15M21 4.90332H3M21 15.6533H15M21 20.9033H3M4.6 16.9033H9.4C9.96005 16.9033 10.2401 16.9033 10.454 16.7943C10.6422 16.6985 10.7951 16.5455 10.891 16.3573C11 16.1434 11 15.8634 11 15.3033V10.5033C11 9.94327 11 9.66324 10.891 9.44933C10.7951 9.26117 10.6422 9.10819 10.454 9.01231C10.2401 8.90332 9.96005 8.90332 9.4 8.90332H4.6C4.03995 8.90332 3.75992 8.90332 3.54601 9.01231C3.35785 9.10819 3.20487 9.26117 3.10899 9.44933C3 9.66324 3 9.94327 3 10.5033V15.3033C3 15.8634 3 16.1434 3.10899 16.3573C3.20487 16.5455 3.35785 16.6985 3.54601 16.7943C3.75992 16.9033 4.03995 16.9033 4.6 16.9033Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  <h3 className="fs14 fw-600 fs-public-sans mt-0 mb-0">Projetos de Lei</h3>
+                </div>
+                <div className="mt-16 projetosdelei">
+                  <h2 className="mb-0 mt-0">
+                    Pesquise os projetos de lei
+                  </h2>
+                  <Button className="mt-24 button button-primary w-100">
+                    Acessar
+                  </Button>
+                </div>
+              </div>
             </div>
             <div className="sidebar stack gap-24">
               <h2 className="fs-24 fw-600 mb-0 fs-mb-20 lh-mb-26">
@@ -152,6 +170,31 @@ const VereadorItemView = (props) => {
               <a href="" className="button-secondary">
                 Leia mais
               </a>
+
+              <div className="other-blocks mt-48">
+                <h2 className="fs-24 fw-600 mb-0 fs-mb-20 lh-mb-26">
+                  Outros assuntos
+                </h2>
+
+                <div className="mt-24 other-blocks-sd">
+                  <h2 className="mb-0 mt-0 fs-20 max-w-250">
+                    Outros vereadores
+                  </h2>
+                  <Button className="mt-24 button button-primary w-100">
+                    Acessar
+                  </Button>
+                </div>
+
+                <div className="mt-24 other-blocks-sd">
+                  <h2 className="mb-0 mt-0 fs-20 max-w-250">
+                    Líderes dos blocos e bancadas partidárias
+                  </h2>
+                  <Button className="mt-24 button button-primary w-100">
+                    Acessar
+                  </Button>
+                </div>
+
+              </div>
             </div>
           </div>
         </div>
