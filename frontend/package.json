@@ -29,12 +29,14 @@
   "workspaces": [
     "src/addons/volto-camara-de-curitiba",
     "src/addons/volto-mui-blocks",
-    "src/addons/volto-dropdownmenu"
+    "src/addons/volto-dropdownmenu",
+    "src/addons/partidos-addon"
   ],
   "addons": [
     "volto-camara-de-curitiba",
     "volto-mui-blocks",
-    "volto-dropdownmenu"
+    "volto-dropdownmenu",
+    "partidos-addon"
   ],
   "jest": {
     "modulePathIgnorePatterns": [

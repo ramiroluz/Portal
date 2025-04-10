@@ -99,3 +99,5 @@ src/addons/*
 !src/addons/volto-mui-blocks
 !src/addons/volto-mui-banners
 !src/addons/volto-dropdownmenu
+
+!src/addons/partidos-addon

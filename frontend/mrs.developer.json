@@ -13,5 +13,8 @@
   },
   "volto-mui-banners": {
     "local": "addons/volto-mui-banners/src"
+  },
+  "partidos-addon": {
+    "local": "addons/partidos-addon/src"
   }
 }
