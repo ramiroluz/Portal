@@ -1,0 +1,21 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser">
+
+  <include package="plone.app.registry" />
+
+  <browser:page
+      name="partidos-controlpanel"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      class="camara_de_curitiba.controlpanels.partidos.PartidosControlPanelView"
+      permission="cmf.ManagePortal"
+      layer="camara_de_curitiba.interfaces.ICamaraDeCuritibaLayer"
+      />
+
+  <!-- Registro usando a abordagem tradicional -->
+  <utility
+      component="camara_de_curitiba.controlpanels.partidos.IPartidosSettings"
+      name="camara_de_curitiba.controlpanels.partidos.IPartidosSettings.partidos"
+      provides="zope.interface.Interface"
+      />
+</configure>

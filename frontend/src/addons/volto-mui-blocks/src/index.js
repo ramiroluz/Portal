@@ -1,5 +1,5 @@
 import { cloneDeep } from "lodash";
-import speakerdeckIcon from "../../volto-slider-banner/src/icons/speakerdeck.svg";
+import LogoCamara from "./icons/logo-camara.svg";
 import View from "./components/GridBlock/View";
 import GridBlockEdit from "./components/GridBlock/Edit";
 import LiveBlockView from "./components/LiveBlock/View";
@@ -67,7 +67,7 @@ const applyConfig = (config) => {
       id,
       title,
       group: "common",
-      icon: speakerdeckIcon,
+      icon: LogoCamara,
       view,
       edit,
       restricted: false,

@@ -49,6 +49,8 @@ setup(
         "Plone",
         "prettyconf",
         "plone.api",
+        'plone.app.registry',
+        'z3c.form',
     ],
     extras_require={
         "test": [

@@ -1,16 +1,26 @@
 import PartidosControlPanel from './controlpanels/Partidos';
 
 export default function applyConfig(config) {
-  // Método garantido para Volto 18
-  config.settings.controlPanels = {
-    ...(config.settings.controlPanels || {}),
-    partidos: {
-      id: 'partidos',
-      title: 'Partidos Políticos',
-      group: 'Site',
+
+  // Add manage view to controlpanels
+  config.settings.controlpanels = [
+    ...(config.settings.controlpanels || []),
+    {
+      '@id': '/partidos',
+      group: 'Content',
+      title: 'Partidos políticos',
+    },
+  ];
+
+
+  config.addonRoutes = [
+    ...config.addonRoutes,
+    {
+      path: '/controlpanel/partidos',
       component: PartidosControlPanel,
     },
-  };
+  ];
 
   return config;
 }
+

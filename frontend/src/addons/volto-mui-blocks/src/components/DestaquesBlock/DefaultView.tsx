@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import iconSVG from './../../icons/speakerdeck.svg';
+import iconSVG from './../../icons/logo-camara.svg';
 import {Icon} from '@plone/volto/components';
 import Stack from "@mui/material/Stack";
 import { Grid } from '@mui/system';

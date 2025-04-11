@@ -4,6 +4,7 @@ from plone import api
 from plone.app.dexterity.behaviors import constrains
 from plone.namedfile.file import NamedBlobImage
 from Products.CMFPlone.interfaces.constrains import ISelectableConstrainTypes
+from camara_de_curitiba.controlpanels.partidos import IPartidosSettings
 
 import json
 import os
@@ -76,6 +77,7 @@ def _create_content(portal, item: dict, creators: list):
 
 
 def populate_portal(portal, creators):
+    register_registry_entries()
     """Create content structure."""
     with open(os.path.join(__location__, "contents.json"), "r") as f_in:
         contents = json.load(f_in)
@@ -105,3 +107,11 @@ def update_home(portal, creators):
     # Contents are created by Editors
     with api.env.adopt_roles(["Editor", "Manager"]):
         _update_home(portal, content)
+
+
+
+def register_registry_entries(context):
+    """Registra as entradas do registry quando o pacote é instalado"""
+    registry = queryUtility(IRegistry)
+    if registry:
+        registry.registerInterface(IPartidosSettings)

@@ -1,7 +1,0 @@
-<registry>
-  <records interface="plone.partidos.interfaces.IPartidosSettings" prefix="plone.partidos">
-    <value key="partidos" purge="false">
-      <element>{"nome": "", "abreviacao": "", "logo": ""}</element>
-    </value>
-  </records>
-</registry>

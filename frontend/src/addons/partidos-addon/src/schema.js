@@ -25,19 +25,23 @@ export const partidoSchema = ({ intl }) => ({
     {
       id: 'default',
       title: 'Default',
-      fields: ['nome', 'abreviacao', 'logo'],
+      fields: ['sigla', 'nome', 'logo'],
     },
   ],
   properties: {
-    nome: {
-      title: intl.formatMessage(messages.nome),
+    sigla: {
+      title: 'Sigla',
+      required: true
     },
-    abreviacao: {
-      title: intl.formatMessage(messages.abreviacao),
+    nome: {
+      title: 'Nome completo',
+      required: true
     },
     logo: {
-      title: intl.formatMessage(messages.logo),
+      title: 'Logo do partido',
       widget: 'file',
+      allowedFileTypes: ['image/jpeg', 'image/png'],
+      maxSize: '1MB',
     },
   },
   required: ['nome', 'abreviacao'],

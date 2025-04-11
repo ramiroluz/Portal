@@ -1,3 +1,22 @@
-<configure xmlns="http://namespaces.zope.org/zope">
+<?xml version="1.0" encoding="UTF-8"?>
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:plone="http://namespaces.plone.org/plone">
+
+    <plone:service
+        method="GET"
+        name="@partidos"
+        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+        factory=".partidos.PartidosGet"
+        permission="zope.Public"
+        />
+
+    <plone:service
+        method="PUT"
+        name="@partidos"
+        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+        factory=".partidos.PartidosPut"
+        permission="zope.Public"
+        />
 
 </configure>
