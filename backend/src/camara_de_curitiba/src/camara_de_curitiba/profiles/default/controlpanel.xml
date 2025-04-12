@@ -13,4 +13,16 @@
     i18n:attributes="title">
     <permission>Manage portal</permission>
   </configlet>
+  <configlet
+    title="Legislaturas"
+    action_id="camara_de_curitiba.controlpanels.legislaturas"
+    appId="camara_de_curitiba.controlpanels.legislaturas"
+    category="Content"
+    condition_expr=""
+    url_expr="string:${portal_url}/@@legislaturas-controlpanel"
+    icon_expr=""
+    visible="True"
+    i18n:attributes="title">
+    <permission>Manage portal</permission>
+  </configlet>
 </object>

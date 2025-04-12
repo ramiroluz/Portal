@@ -24,7 +24,7 @@ const VereadorItemView = (props) => {
             <img src={content?.foto?.download} alt="" className="aspect-ratio-1-1 d-mb-none"/>
             <div className="info">
               <div className="flex gap-16 align-items-center flex-column-mb">
-                <h1 className="fs-30 fw-600 lh-normal mb-0 fs-mb-24">Vereador {content?.title} • {partido?.sigla} </h1>
+                <h1 className="fs-30 fw-600 lh-normal mb-0 fs-mb-24">Vereador {content?.title} • {partido?.nome} ({partido?.sigla}) </h1>
                 <img src={content?.image?.download} alt={`Vereador ${content?.title}`}
                      className="aspect-ratio-1-1 d-none d-mb-block"/>
                 {

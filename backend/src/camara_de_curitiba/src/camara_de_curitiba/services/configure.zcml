@@ -19,4 +19,28 @@
         permission="zope.Public"
         />
 
+    <plone:service
+        method="GET"
+        name="@legislaturas"
+        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+        factory=".legislaturas.LegislaturasGet"
+        permission="zope.Public"
+        />
+
+    <plone:service
+        method="PUT"
+        name="@legislaturas"
+        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+        factory=".legislaturas.LegislaturasPut"
+        permission="zope.Public"
+        />
+
+    <plone:service
+        method="GET"
+        name="@legislaturas-e-partidos"
+        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+        factory=".legislaturas_e_partidos.LegislaturasEVereadoresGet"
+        permission="zope.Public"
+        />
+
 </configure>

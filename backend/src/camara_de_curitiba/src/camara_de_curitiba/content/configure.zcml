@@ -14,7 +14,7 @@
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 
-  <adapter 
+  <adapter
       factory=".vereador.NameFromTitle"
       provides="plone.app.content.interfaces.INameFromTitle"
       for=".vereador.IVereador"
@@ -58,4 +58,4 @@
       permission="zope2.View"
       />
 
-</configure> 
+</configure>

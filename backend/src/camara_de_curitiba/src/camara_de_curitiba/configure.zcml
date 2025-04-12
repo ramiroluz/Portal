@@ -4,6 +4,7 @@
     xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:plone="http://namespaces.plone.org/plone"
     xmlns:dx="http://namespaces.plone.org/dexterity"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     i18n_domain="camara_de_curitiba"
     >
 
@@ -41,5 +42,17 @@
   <include package=".services" />
   <include package=".subscribers" />
   <include package=".controlpanels" />
+
+  <utility
+      name="camara_de_curitiba.partidos"
+      component="camara_de_curitiba.content.vocabularies.partidos_vocabulary"
+      provides="zope.schema.interfaces.IVocabularyFactory"
+      />
+
+  <utility
+      name="camara_de_curitiba.legislaturas"
+      component="camara_de_curitiba.content.vocabularies.legislaturas_vocabulary"
+      provides="zope.schema.interfaces.IVocabularyFactory"
+      />
 
 </configure>

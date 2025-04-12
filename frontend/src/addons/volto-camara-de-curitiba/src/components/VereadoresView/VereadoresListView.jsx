@@ -15,8 +15,12 @@ const VereadoresListView = (content) => {
   const dispatch = useDispatch();
   const schema = useSelector((state) => state.schema.schema);
   const items = useSelector((state) => state.search.items);
-  const partidos = useSelector((state) => state.controlpanels?.controlpanel?.items);
-  console.log(partidos)
+  const state = useSelector((state) => state);
+  const partidos = useSelector((state) => state.controlpanels?.controlpanel?.partidos);
+  const legislaturas = useSelector((state) => state.controlpanels?.controlpanel?.legislaturas);
+
+
+  console.log("state", state);
   const contentType = 'vereadores';
 
   useEffect(() => {
@@ -28,7 +32,7 @@ const VereadoresListView = (content) => {
         fullobjects: 1,  // Para obter todos os dados de uma vez
       })
     );
-    dispatch(getPartidos('@partidos'));
+    dispatch(getPartidos('@legislaturas-e-partidos'));
   }, [dispatch, contentType]);
 
   return (
@@ -48,9 +52,9 @@ const VereadoresListView = (content) => {
             <form action="" className="mt-24 flex gap-24">
               <select name="" id="">
                 {
-                  schema?.properties?.legislaturas?.choices.map((z, i) =>
-                    <option value={z[0]} selected={(schema?.properties?.legislaturas?.choices.length - 1) === i ? 'true' : 'false'}>
-                      {z[1]}
+                  legislaturas?.length > 0  && legislaturas.map((z, i) =>
+                    <option value={z[0]} selected={(legislaturas.length - 1) === i ? 'true' : 'false'}>
+                      {z?.nome}
                     </option>
                   )
                 }

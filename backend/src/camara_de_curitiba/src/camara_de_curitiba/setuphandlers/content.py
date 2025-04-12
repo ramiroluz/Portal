@@ -5,6 +5,9 @@ from plone import api
 from plone.app.dexterity.behaviors import constrains
 from plone.namedfile.file import NamedBlobImage
 from Products.CMFPlone.interfaces.constrains import ISelectableConstrainTypes
+from plone.registry.interfaces import IRegistry
+from zope.component import queryUtility
+from camara_de_curitiba.controlpanels.legislaturas.controlpanel import ILegislaturasSettings
 
 import json
 import os
@@ -114,3 +117,4 @@ def register_registry_entries(context):
     registry = queryUtility(IRegistry)
     if registry:
         registry.registerInterface(IPartidosSettings)
+        registry.registerInterface(ILegislaturasSettings)
