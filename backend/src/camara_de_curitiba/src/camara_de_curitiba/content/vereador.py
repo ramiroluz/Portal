@@ -1,23 +1,17 @@
 # -*- coding: utf-8 -*-
-# from plone.app.textfield import RichText
-# from plone.autoform import directives
+from plone.app.textfield import RichText
+from plone.autoform import directives
 from plone.dexterity.content import Container
-
-# from plone.namedfile import field as namedfile
+from plone.namedfile import field as namedfile
 from plone.supermodel import model
-
-# from plone.supermodel.directives import fieldset
-# from z3c.form.browser.radio import RadioFieldWidget
-# from zope import schema
+from plone.supermodel.directives import fieldset
+from zope import schema
 from zope.interface import implementer
 from plone.app.content.interfaces import INameFromTitle
 from zope.interface import provider
 from zope.component import adapter
 from plone.dexterity.interfaces import IDexterityContent
-
-
-# from camara_de_curitiba import _
-
+from plone.app.z3cform.widget import SelectFieldWidget
 
 @provider(INameFromTitle)
 @adapter(IDexterityContent)
@@ -29,9 +23,51 @@ class NameFromTitle(object):
     def title(self):
         return self.context.title
 
-
 class IVereador(model.Schema):
     """Marker interface and Dexterity Python Schema for Vereador"""
+
+    fieldset('dados_vereador', label=u'Perfil do Vereador', fields=['partido','mandato', 'foto', 'video_principal', 'perfil_do_vereador','trabalho_parlamentar', 'contatos'])
+
+
+    mandato = schema.TextLine(
+        title=u"Mandato",
+        description=u"Mandato",
+        required=False,
+    )
+
+    partido = schema.Choice(
+        title=u"Partido",
+        required=True,
+        vocabulary="camara_de_curitiba.partidos",
+    )
+
+    foto = namedfile.NamedBlobImage(
+        title=u"Foto",
+        required=True,
+    )
+
+    perfil_do_vereador = RichText(
+        title=u"Perfil do vereador",
+        required=False,
+    )
+
+    trabalho_parlamentar = RichText(
+        title=u"Trabalho Parlamentar",
+        required=False,
+    )
+
+    contatos = RichText(
+        title=u"Contatos",
+        required=False,
+    )
+
+    video_principal = schema.TextLine(
+        title=u"Vídeo principal",
+        description=u"URL do vídeo principal do vereador",
+        required=False,
+    )
+
+    directives.widget(partido=SelectFieldWidget)
 
     # If you want, you can load a xml model created TTW here
     # and customize it in Python:

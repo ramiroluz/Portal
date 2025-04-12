@@ -6,6 +6,7 @@
   />
 -->
   <object name="vereador" meta_type="Dexterity FTI"/>
+  <object name="partido" meta_type="Dexterity FTI"/>
   <object name="Plone Site" meta_type="Dexterity FTI" />
   <object name="Folder" meta_type="Dexterity FTI" />
 </object>

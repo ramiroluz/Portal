@@ -1,7 +1,7 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
-    xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
     xmlns:plone="http://namespaces.plone.org/plone"
     xmlns:browser="http://namespaces.zope.org/browser"
     i18n_domain="camara_de_curitiba">
@@ -20,15 +20,40 @@
       for=".vereador.IVereador"
       />
 
+  <subscriber
+      for="plone.dexterity.interfaces.IDexterityContent
+           zope.lifecycleevent.interfaces.IObjectAddedEvent"
+      handler=".events.vereador_added"
+      />
+
   <utility
       name="vereador"
       component=".vereador.IVereador"
       provides="plone.app.dexterity.interfaces.ITypeSettings"
       />
 
+  <utility
+      name="partido"
+      component=".partido.IPartido"
+      provides="plone.app.dexterity.interfaces.ITypeSettings"
+      />
+
+  <utility
+      name="camara_de_curitiba.partidos"
+      component=".vocabularies.partidos_vocabulary"
+      provides="zope.schema.interfaces.IVocabularyFactory"
+      />
+
   <browser:page
       name="vereador"
       for=".vereador.IVereador"
+      class="plone.dexterity.browser.view.DefaultView"
+      permission="zope2.View"
+      />
+
+  <browser:page
+      name="partido"
+      for=".partido.IPartido"
       class="plone.dexterity.browser.view.DefaultView"
       permission="zope2.View"
       />

@@ -1,25 +1,37 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Container, Header} from 'semantic-ui-react';
-import {useSelector} from 'react-redux';
-import {getYouTubeEmbedSrc} from "../../utils/Utils";
+import {useDispatch, useSelector} from 'react-redux';
+import {getPartidos, getYouTubeEmbedSrc} from "../../utils/Utils";
 import {Button} from "@mui/material";
 
 
-
 const VereadorItemView = (props) => {
-  const content = useSelector((state) => state.content.data);
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state);
+  const content = state.content.data;
+  const partido = state?.controlpanels?.controlpanel?.items?.find((z) => z["@id"] === content?.partido?.token);
+
+  useEffect(() => {
+    dispatch(getPartidos('@partidos'));
+  }, [dispatch]);
+
   const [tab, setTab] = useState(0);
   return (
     <article>
       <div className="py-30">
         <div className="container">
           <div className="top-vereador flex gap-24 align-items-center flex-column-mb">
-            <img src={content?.image?.download} alt="" className="aspect-ratio-1-1 d-mb-none"/>
+            <img src={content?.foto?.download} alt="" className="aspect-ratio-1-1 d-mb-none"/>
             <div className="info">
               <div className="flex gap-16 align-items-center flex-column-mb">
-                <h1 className="fs-30 fw-600 lh-normal mb-0 fs-mb-24">Vereador {content?.title} • {content?.partido?.title || "Sem partido"} </h1>
-                <img src={content?.image?.download} alt={`Vereador ${content?.title}`} className="aspect-ratio-1-1 d-none d-mb-block"/>
-                <img src="/images/single/Partido.png" alt="" className="aspect-ratio-1-1 border-rounded"/>
+                <h1 className="fs-30 fw-600 lh-normal mb-0 fs-mb-24">Vereador {content?.title} • {partido?.sigla} </h1>
+                <img src={content?.image?.download} alt={`Vereador ${content?.title}`}
+                     className="aspect-ratio-1-1 d-none d-mb-block"/>
+                {
+                  partido?.logo?.download && (<img src={partido?.logo?.download} alt={`Logo ${partido?.sigla}`}
+                                                   className="aspect-ratio-1-1 border-rounded logo-partido"/>)
+                }
+
               </div>
               <p className="fs-24 fw-600 fs-mb-18 fs-montserrat mt-16 text-mb-center">
                 {content?.mandato}
@@ -30,15 +42,17 @@ const VereadorItemView = (props) => {
       </div>
       <div className="w-100 background-color-cinza-soft py-32">
         <div className="container">
-          <div className="grid-vereador gap-32">
+          <div className="grid-vereador gap-32 row">
             <div className="card-default py-24 px-24 px-mb-16 py-mb-16">
-              <iframe className="aspect-ratio-16-9 w-100 h-auto border-radius-16" width="560" height="315"
-                      src={getYouTubeEmbedSrc(content?.video_principal)}
-                      title="YouTube video player" frameBorder="0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                      referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
-
-              <div className="options-vereador-single mt-30 overflow-auto-mobile">
+              {
+                getYouTubeEmbedSrc(content?.video_principal) &&
+                (<iframe className="aspect-ratio-16-9 w-100 h-auto border-radius-16" width="560" height="315"
+                         src={getYouTubeEmbedSrc(content?.video_principal)}
+                         title="YouTube video player" frameBorder="0"
+                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                         referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>)
+              }
+              <div className="options-vereador-single overflow-auto-mobile">
                 <a href="#" className={tab === 0 ? "active" : ""} onClick={(event) => {
                   event.preventDefault();
                   setTab(0)
@@ -61,7 +75,7 @@ const VereadorItemView = (props) => {
                   Contato
                 </a>
               </div>
-              <div className="mt-30 py-12">
+              <div className="py-12 mt-16">
                 {
                   tab === 0 && (
                     <div className="flex gap-8 align-items-center">
@@ -102,20 +116,23 @@ const VereadorItemView = (props) => {
 
               {
                 tab === 0 && (
-                  <div className="mt-16 fs-16 fw-400 fs-lato space-16 child lh-normal context" dangerouslySetInnerHTML={{ __html: content?.perfil_do_vereador?.data }}></div>
+                  <div className="mt-16 fs-16 fw-400 fs-lato space-16 child lh-normal context"
+                       dangerouslySetInnerHTML={{__html: content?.perfil_do_vereador?.data}}></div>
                 )
               }
 
               {
                 tab === 1 && (
-                  <div className="mt-16 fs-16 fw-400 fs-lato space-16 child lh-normal context" dangerouslySetInnerHTML={{ __html: content?.trabalho_parlamentar?.data }}></div>
+                  <div className="mt-16 fs-16 fw-400 fs-lato space-16 child lh-normal context"
+                       dangerouslySetInnerHTML={{__html: content?.trabalho_parlamentar?.data}}></div>
                 )
               }
 
 
               {
                 tab === 2 && (
-                  <div className="mt-16 fs-16 fw-400 fs-lato space-16 child lh-normal context" dangerouslySetInnerHTML={{ __html: content?.contatos?.data }}></div>
+                  <div className="mt-16 fs-16 fw-400 fs-lato space-16 child lh-normal context"
+                       dangerouslySetInnerHTML={{__html: content?.contatos?.data}}></div>
                 )
               }
 
@@ -128,7 +145,9 @@ const VereadorItemView = (props) => {
               <div className="mt-16 fs-16 fw-400 fs-lato space-16 child lh-normal context">
                 <div className="flex gap-8 align-items-center">
                   <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M21 10.1533H15M21 4.90332H3M21 15.6533H15M21 20.9033H3M4.6 16.9033H9.4C9.96005 16.9033 10.2401 16.9033 10.454 16.7943C10.6422 16.6985 10.7951 16.5455 10.891 16.3573C11 16.1434 11 15.8634 11 15.3033V10.5033C11 9.94327 11 9.66324 10.891 9.44933C10.7951 9.26117 10.6422 9.10819 10.454 9.01231C10.2401 8.90332 9.96005 8.90332 9.4 8.90332H4.6C4.03995 8.90332 3.75992 8.90332 3.54601 9.01231C3.35785 9.10819 3.20487 9.26117 3.10899 9.44933C3 9.66324 3 9.94327 3 10.5033V15.3033C3 15.8634 3 16.1434 3.10899 16.3573C3.20487 16.5455 3.35785 16.6985 3.54601 16.7943C3.75992 16.9033 4.03995 16.9033 4.6 16.9033Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path
+                      d="M21 10.1533H15M21 4.90332H3M21 15.6533H15M21 20.9033H3M4.6 16.9033H9.4C9.96005 16.9033 10.2401 16.9033 10.454 16.7943C10.6422 16.6985 10.7951 16.5455 10.891 16.3573C11 16.1434 11 15.8634 11 15.3033V10.5033C11 9.94327 11 9.66324 10.891 9.44933C10.7951 9.26117 10.6422 9.10819 10.454 9.01231C10.2401 8.90332 9.96005 8.90332 9.4 8.90332H4.6C4.03995 8.90332 3.75992 8.90332 3.54601 9.01231C3.35785 9.10819 3.20487 9.26117 3.10899 9.44933C3 9.66324 3 9.94327 3 10.5033V15.3033C3 15.8634 3 16.1434 3.10899 16.3573C3.20487 16.5455 3.35785 16.6985 3.54601 16.7943C3.75992 16.9033 4.03995 16.9033 4.6 16.9033Z"
+                      stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
                   <h3 className="fs14 fw-600 fs-public-sans mt-0 mb-0">Projetos de Lei</h3>
                 </div>
@@ -147,25 +166,29 @@ const VereadorItemView = (props) => {
                 Notícias sobre<br/> {content?.title}
               </h2>
               <div className="card-default py-24 px-24 stack gap-8 align-items-start px-mb-16 py-mb-16">
-                <h3 className="fs-24 fw-600 lh-30 mb-0 fs-mb-20">Curitiba Avança com Projeto de Cidade Inteligente para Melhorar
+                <h3 className="fs-24 fw-600 lh-30 mb-0 fs-mb-20">Curitiba Avança com Projeto de Cidade Inteligente para
+                  Melhorar
                   Serviços Públicos</h3>
                 <span className="tag-color">Constituição e Justiça</span>
               </div>
 
               <div className="card-default py-24 px-24 stack gap-8 align-items-start px-mb-16 py-mb-16">
-                <h3 className="fs-24 fw-600 lh-30 mb-0 fs-mb-20">Comissão de Constituição e Justiça Avalia Nova Proposta de
+                <h3 className="fs-24 fw-600 lh-30 mb-0 fs-mb-20">Comissão de Constituição e Justiça Avalia Nova Proposta
+                  de
                   Reforma Tributáriat</h3>
                 <span className="tag-color">Constituição e Justiça</span>
               </div>
 
               <div className="card-default py-24 px-24 stack gap-8 align-items-start px-mb-16 py-mb-16">
-                <h3 className="fs-24 fw-600 lh-30 mb-0 fs-mb-20">Sessão Plenária Homenageia Personalidades que Contribuíram para
+                <h3 className="fs-24 fw-600 lh-30 mb-0 fs-mb-20">Sessão Plenária Homenageia Personalidades que
+                  Contribuíram para
                   o Desenvolvimento de Curitiba</h3>
                 <span className="tag-color">Constituição e Justiça</span>
               </div>
 
               <div className="card-default py-24 px-24 stack gap-8 align-items-start px-mb-16 py-mb-16">
-                <h3 className="fs-24 fw-600 lh-30 mb-0 fs-mb-20">Câmara Municipal Entrega Prêmio de Mérito Comunitário a Líderes
+                <h3 className="fs-24 fw-600 lh-30 mb-0 fs-mb-20">Câmara Municipal Entrega Prêmio de Mérito Comunitário a
+                  Líderes
                   Locais</h3>
                 <span className="tag-color">Constituição e Justiça</span>
               </div>
@@ -173,7 +196,7 @@ const VereadorItemView = (props) => {
                 Leia mais
               </a>
 
-              <div className="other-blocks mt-48">
+              <div className="other-blocks mt-24">
                 <h2 className="fs-24 fw-600 mb-0 fs-mb-20 lh-mb-26">
                   Outros assuntos
                 </h2>

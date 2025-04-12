@@ -12,7 +12,7 @@ const applyConfig = (config) => {
 
   config.views.contentTypesViews = {
     ...config.views.contentTypesViews,
-    vereadores: VereadorItemView, // Associa a visualização ao novo tipo de conteúdo
+    vereador: VereadorItemView, // Associa a visualização ao novo tipo de conteúdo
   };
 
   config.addonRoutes = [

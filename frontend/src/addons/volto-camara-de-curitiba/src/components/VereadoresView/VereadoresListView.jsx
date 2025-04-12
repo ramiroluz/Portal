@@ -7,17 +7,8 @@ import {getSchema} from "@plone/volto/actions/schema/schema";
 import {searchContent} from "@plone/volto/actions/search/search";
 import {flattenToAppURL} from "@plone/volto/helpers";
 import {GET_CONTROLPANEL} from "@plone/volto/constants/ActionTypes";
+import {getPartidos} from "../../utils/Utils";
 
-
-const getPartidos = (url) => {
-  return {
-    type: GET_CONTROLPANEL,
-    request: {
-      op: 'get',
-      path: url,
-    },
-  };
-}
 
 const VereadoresListView = (content) => {
   const [tab, setTab] = useState(1);
@@ -32,7 +23,7 @@ const VereadoresListView = (content) => {
     dispatch(getSchema(contentType));
     dispatch(
       searchContent('/vereadores', {  // ou '/' para buscar em todo o site
-        portal_type: 'vereadores',
+        portal_type: 'vereador',
         sort_on: 'getObjPositionInParent',
         fullobjects: 1,  // Para obter todos os dados de uma vez
       })
