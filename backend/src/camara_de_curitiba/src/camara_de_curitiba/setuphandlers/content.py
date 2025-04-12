@@ -1,10 +1,10 @@
+from camara_de_curitiba.controlpanels.partidos import IPartidosSettings
 from DateTime import DateTime
 from dateutil.parser import parse
 from plone import api
 from plone.app.dexterity.behaviors import constrains
 from plone.namedfile.file import NamedBlobImage
 from Products.CMFPlone.interfaces.constrains import ISelectableConstrainTypes
-from camara_de_curitiba.controlpanels.partidos import IPartidosSettings
 
 import json
 import os
@@ -107,7 +107,6 @@ def update_home(portal, creators):
     # Contents are created by Editors
     with api.env.adopt_roles(["Editor", "Manager"]):
         _update_home(portal, content)
-
 
 
 def register_registry_entries(context):

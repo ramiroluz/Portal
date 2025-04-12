@@ -1,6 +1,7 @@
-graft src/camara_de_curitiba
+graft src/collective
 graft docs
 include *.rst
-include *.md
-include *.cfg
+exclude tox.ini
+exclude *.txt
+exclude .gitlab-ci.yml
 global-exclude *.pyc

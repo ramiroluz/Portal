@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<object name="Plone Site" meta_type="Dexterity FTI">
+  <allowed_content_types>
+    <allowed_type>Folder</allowed_type>
+  </allowed_content_types>
+</object>

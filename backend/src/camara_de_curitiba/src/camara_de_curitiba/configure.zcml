@@ -3,10 +3,19 @@
     xmlns:i18n="http://namespaces.zope.org/i18n"
     xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:dx="http://namespaces.plone.org/dexterity"
     i18n_domain="camara_de_curitiba"
     >
 
   <i18n:registerTranslations directory="locales" />
+    <!-- Primeiro inclui o meta.zcml que registra os namespaces -->
+    <include package="plone.dexterity" file="meta.zcml" />
+
+    <!-- Agora sim pode incluir o resto do Dexterity -->
+    <include package="plone.dexterity" />
+
+    <!-- Registra o content type Vereador -->
+    <include package=".content" />
 
   <include
       package="Products.CMFCore"

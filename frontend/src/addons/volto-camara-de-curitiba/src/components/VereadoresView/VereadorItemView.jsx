@@ -4,6 +4,8 @@ import {useSelector} from 'react-redux';
 import {getYouTubeEmbedSrc} from "../../utils/Utils";
 import {Button} from "@mui/material";
 
+
+
 const VereadorItemView = (props) => {
   const content = useSelector((state) => state.content.data);
   const [tab, setTab] = useState(0);

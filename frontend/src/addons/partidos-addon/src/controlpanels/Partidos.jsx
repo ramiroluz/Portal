@@ -2,11 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { defineMessages, injectIntl } from 'react-intl';
 import { partidoSchema } from '../schema';
 import { BlockDataForm } from '@plone/volto/components/manage/Form';
-import { Button } from 'semantic-ui-react';
+import { Button, Message } from 'semantic-ui-react';
 import config from '@plone/volto/registry';
 import { useDispatch, useSelector } from "react-redux";
 import { GET_CONTROLPANEL, UPDATE_CONTROLPANEL } from "@plone/volto/constants/ActionTypes";
-import { uploadFile } from '@plone/volto/actions';
+import { createContent } from '@plone/volto/actions';
+import {BlockSettingsSidebar, Icon, SidebarPortal, Toast, Toolbar} from '@plone/volto/components';
+import { toast } from 'react-toastify';
+import { useLocation } from 'react-router-dom';
+import {createPortal} from "react-dom";
+import saveSVG from '@plone/volto/icons/save.svg';
+import clearSVG from '@plone/volto/icons/clear.svg';
 
 const messages = defineMessages({
   title: {
@@ -24,6 +30,14 @@ const messages = defineMessages({
   save: {
     id: 'Salvar',
     defaultMessage: 'Salvar',
+  },
+  saveSuccess: {
+    id: 'Partidos salvos com sucesso',
+    defaultMessage: 'Partidos salvos com sucesso',
+  },
+  saveError: {
+    id: 'Erro ao salvar partidos',
+    defaultMessage: 'Erro ao salvar partidos',
   },
 });
 
@@ -56,8 +70,6 @@ const PartidosControlPanel = (props) => {
   const [uploading, setUploading] = useState(false);
   const partidos = state.controlpanels?.controlpanel?.items || [];
 
-  console.log("partidos", partidos);
-
   const schema = {
     title: intl.formatMessage(messages.title),
     fieldsets: [
@@ -71,8 +83,9 @@ const PartidosControlPanel = (props) => {
       partidos: {
         title: intl.formatMessage(messages.title),
         description: intl.formatMessage(messages.description),
-        widget: 'object_list',
+        widget: 'object_list_title',
         schema: partidoSchema({ intl }),
+        default: [],
       },
     },
     required: [],
@@ -87,6 +100,7 @@ const PartidosControlPanel = (props) => {
       const response = await fetch('/api/upload', {
         method: 'POST',
         body: formData,
+        credentials: 'same-origin',
       });
 
       if (!response.ok) {
@@ -124,13 +138,34 @@ const PartidosControlPanel = (props) => {
     }
   };
 
-  const onSubmit = () => {
-    console.log("Salvando dados:", formData);
-    dispatch(
-      put('++api++/@partidos', {
-        items: formData.partidos || [],
-      })
-    );
+  const onSubmit = async () => {
+    setUploading(true);
+    try {
+      const response = await dispatch(
+        put('++api++/@partidos', {
+          items: formData.partidos || [],
+        })
+      );
+      if (response?.error) {
+        throw new Error(response.error);
+      }
+      toast.success(
+        <Toast
+          success
+          title={"Salvo"}
+        />,
+      )
+    } catch (error) {
+      toast.error(
+        <Toast
+          error
+          title="Ops..."
+          content={error.message}
+        />,
+      )
+    } finally {
+      setUploading(false);
+    }
   };
 
   useEffect(() => {
@@ -145,24 +180,57 @@ const PartidosControlPanel = (props) => {
   }, [partidos]);
 
   return (
-    <div className="container">
-      <BlockDataForm
-        schema={schema}
-        title={schema.title}
-        onChangeField={onChangeField}
-        formData={formData}
-      />
-      <div className="form-buttons">
-        <Button
-          primary
-          onClick={onSubmit}
-          loading={uploading}
-          disabled={uploading}
-        >
-          {intl.formatMessage(messages.save)}
-        </Button>
+    <>
+      <div className="container">
+        <BlockDataForm
+          schema={schema}
+          title={schema.title}
+          onChangeField={onChangeField}
+          formData={formData}
+        />
       </div>
-    </div>
+      {createPortal(
+          <Toolbar
+            pathname={props.pathname}
+            hideDefaultViewButtons
+            inner={
+              <>
+                <Button
+                  id="toolbar-save"
+                  className="save"
+                  aria-label={props.intl.formatMessage(messages.save)}
+                  onClick={onSubmit}
+                  disabled={uploading}
+                  loading={uploading}
+                >
+                  <Icon
+                    name={saveSVG}
+                    className="circled"
+                    size="30px"
+                    title={intl.formatMessage(messages.save)}
+                  />
+                </Button>
+
+                <Button
+                  className="cancel"
+                  aria-label={"Cancelar"}
+                  onClick={() => props.history.goBack()}
+                >
+                  <Icon
+                    name={clearSVG}
+                    className="circled"
+                    size="30px"
+                    title={"Cancelar"}
+                  />
+                </Button>
+              </>
+            }
+          />,
+          document.getElementById('toolbar'),
+        )}
+    </>
+
+
   );
 };
 

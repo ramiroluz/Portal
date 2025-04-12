@@ -6,13 +6,26 @@ import {useDispatch, useSelector} from "react-redux";
 import {getSchema} from "@plone/volto/actions/schema/schema";
 import {searchContent} from "@plone/volto/actions/search/search";
 import {flattenToAppURL} from "@plone/volto/helpers";
+import {GET_CONTROLPANEL} from "@plone/volto/constants/ActionTypes";
 
+
+const getPartidos = (url) => {
+  return {
+    type: GET_CONTROLPANEL,
+    request: {
+      op: 'get',
+      path: url,
+    },
+  };
+}
 
 const VereadoresListView = (content) => {
   const [tab, setTab] = useState(1);
   const dispatch = useDispatch();
   const schema = useSelector((state) => state.schema.schema);
   const items = useSelector((state) => state.search.items);
+  const partidos = useSelector((state) => state.controlpanels?.controlpanel?.items);
+  console.log(partidos)
   const contentType = 'vereadores';
 
   useEffect(() => {
@@ -24,6 +37,7 @@ const VereadoresListView = (content) => {
         fullobjects: 1,  // Para obter todos os dados de uma vez
       })
     );
+    dispatch(getPartidos('@partidos'));
   }, [dispatch, contentType]);
 
   return (
@@ -91,34 +105,14 @@ const VereadoresListView = (content) => {
           </div>
           {
             tab === 2 && (<div className="mt-24 flex gap-16 partidos flex-wrap">
-              <a href="">
-                MDB
-              </a>
-              <a href="">
-                PT
-              </a>
-              <a href="">
-                NOVO
-              </a>
+              {
+                partidos?.map((z) => (
+                  <a href="">
+                    {z?.sigla}
+                  </a>
+                ))
+              }
 
-              <a href="">
-                PP
-              </a>
-              <a href="">
-                PSB
-              </a>
-              <a href="">
-                PSOL
-              </a>
-              <a href="">
-                UNIAO
-              </a>
-              <a href="">
-                PODE
-              </a>
-              <a href="">
-                CIDADANIA
-              </a>
             </div>)
           }
           <div className="mt-24">

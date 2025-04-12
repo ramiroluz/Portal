@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<object name="portal_properties" meta_type="Plone Property Sheet">
+ <object name="navtree_properties" meta_type="Plone Property Sheet">
+  <property name="metaTypesNotToList" type="lines" purge="False">
+   <element value="Vereador"/>
+  </property>
+  <property name="parentMetaTypesNotToQuery" type="lines" purge="False">
+   <element value="Vereador"/>
+  </property>
+ </object>
+</object> 

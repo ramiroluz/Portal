@@ -21,6 +21,7 @@ const messages = defineMessages({
 
 export const partidoSchema = ({ intl }) => ({
   title: 'Partido Político',
+  titleField: 'sigla',
   fieldsets: [
     {
       id: 'default',
@@ -44,5 +45,5 @@ export const partidoSchema = ({ intl }) => ({
       maxSize: '1MB',
     },
   },
-  required: ['nome', 'abreviacao'],
+  required: ['nome', 'sigla'],
 });

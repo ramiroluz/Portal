@@ -1,7 +1,7 @@
-from plone import api
 from camara_de_curitiba import logger
 from camara_de_curitiba.setuphandlers import content
 from camara_de_curitiba.setuphandlers import users
+from plone import api
 from Products.CMFPlone.interfaces import INonInstallable
 from zope.interface import implementer
 

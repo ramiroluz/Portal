@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<registry>
+  <record name="plone.types_not_searched">
+    <value purge="false">
+      <element>vereador</element>
+    </value>
+  </record>
+</registry> 

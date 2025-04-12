@@ -1,4 +1,5 @@
 import PartidosControlPanel from './controlpanels/Partidos';
+import ObjectListWithTitleWidget from "./widgets/ObjectListWithTitleWidget";
 
 export default function applyConfig(config) {
 
@@ -20,6 +21,8 @@ export default function applyConfig(config) {
       component: PartidosControlPanel,
     },
   ];
+
+  config.widgets.widget.object_list_title = ObjectListWithTitleWidget;
 
   return config;
 }
