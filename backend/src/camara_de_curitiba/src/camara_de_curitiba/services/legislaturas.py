@@ -1,10 +1,11 @@
 from ..controlpanels.legislaturas.controlpanel import ILegislaturasSettings
 from plone.registry.interfaces import IRegistry
-from plone.restapi.services import Service
 from plone.restapi.deserializer import json_body
+from plone.restapi.services import Service
 from zope.component import getUtility
 from zope.interface import implementer
 from zope.publisher.interfaces import IPublishTraverse
+
 import uuid
 
 

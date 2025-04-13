@@ -26,15 +26,49 @@
       handler=".events.vereador_added"
       />
 
-  <utility
-      name="vereador"
-      component=".vereador.IVereador"
-      provides="plone.app.dexterity.interfaces.ITypeSettings"
+  <subscriber
+      for="plone.dexterity.interfaces.IDexterityContent
+           zope.lifecycleevent.interfaces.IObjectAddedEvent"
+      handler=".events.editoria_added"
+      />
+
+  <subscriber
+      for="plone.dexterity.interfaces.IDexterityContent
+           zope.lifecycleevent.interfaces.IObjectAddedEvent"
+      handler=".events.noticia_added_modified"
+      />
+
+  <subscriber
+      for="plone.dexterity.interfaces.IDexterityContent
+           zope.lifecycleevent.interfaces.IObjectModifiedEvent"
+      handler=".events.noticia_added_modified"
+      />
+
+  <adapter
+      factory=".adapters.PartidoRedirect"
+      provides=".adapters.IPartidoRedirect"
+      for="plone.dexterity.interfaces.IDexterityFTI
+           zope.publisher.interfaces.browser.IBrowserRequest"
+      name="partido"
       />
 
   <utility
-      name="partido"
-      component=".partido.IPartido"
+      name="camara_de_curitiba.editorias"
+      component=".behaviors.EditoriasVocabulary"
+      provides="zope.schema.interfaces.IVocabularyFactory"
+      />
+
+  <plone:behavior
+      title="Editoria"
+      description="Permite vincular uma notícia a uma editoria"
+      provides=".behaviors.IEditoriaBehavior"
+      for="plone.dexterity.interfaces.IDexterityContent"
+      name="camara_de_curitiba.editoria"
+      />
+
+  <utility
+      name="vereador"
+      component=".vereador.IVereador"
       provides="plone.app.dexterity.interfaces.ITypeSettings"
       />
 
@@ -50,6 +84,12 @@
       provides="zope.schema.interfaces.IVocabularyFactory"
       />
 
+  <utility
+      name="camara_de_curitiba.cores"
+      component=".vocabularies.CoresVocabulary"
+      provides="zope.schema.interfaces.IVocabularyFactory"
+      />
+
   <browser:page
       name="vereador"
       for=".vereador.IVereador"
@@ -58,10 +98,11 @@
       />
 
   <browser:page
-      name="partido"
-      for=".partido.IPartido"
-      class="plone.dexterity.browser.view.DefaultView"
-      permission="zope2.View"
+      name="add"
+      for="*"
+      class=".views.AddPartidoView"
+      permission="cmf.AddPortalContent"
+      layer="zope.interface.Interface"
       />
 
 </configure>

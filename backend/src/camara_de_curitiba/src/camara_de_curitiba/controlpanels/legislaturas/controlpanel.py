@@ -6,8 +6,10 @@ from plone.app.registry.browser.controlpanel import RegistryEditForm
 from plone.restapi.controlpanels import RegistryConfigletPanel
 from plone.z3cform import layout
 from zope import schema
-from zope.component import adapter, queryUtility
+from zope.component import adapter
+from zope.component import queryUtility
 from zope.interface import Interface
+
 import uuid
 
 
@@ -19,7 +21,7 @@ class ILegislaturasSettings(Interface):
         value_type=schema.Dict(
             title="Legislatura",
             value_type=schema.TextLine(),
-            key_type=schema.TextLine()
+            key_type=schema.TextLine(),
         ),
         required=False,
         default=[],

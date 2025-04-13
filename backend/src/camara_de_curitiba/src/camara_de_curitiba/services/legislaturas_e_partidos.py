@@ -7,6 +7,7 @@ from plone.restapi.services import Service
 from zope.component import getUtility
 from zope.interface import implementer
 from zope.publisher.interfaces import IPublishTraverse
+
 import uuid
 
 
@@ -51,5 +52,5 @@ class LegislaturasEVereadoresGet(Service):
         return {
             "@id": f"{self.context.absolute_url()}/legislaturas-e-partidos",
             "legislaturas": legislaturas,
-            "partidos": partidos
+            "partidos": partidos,
         }

@@ -1,8 +1,11 @@
 # -*- coding: utf-8 -*-
 from plone.app.content.interfaces import INameFromTitle
 from plone.app.textfield import RichText
+from plone.app.vocabularies.catalog import CatalogSource
+from plone.app.z3cform.widget import RelatedItemsFieldWidget
 from plone.app.z3cform.widget import SelectFieldWidget
 from plone.autoform import directives
+from plone.autoform import directives as form
 from plone.dexterity.content import Container
 from plone.dexterity.interfaces import IDexterityContent
 from plone.namedfile import field as namedfile
@@ -12,9 +15,7 @@ from zope import schema
 from zope.component import adapter
 from zope.interface import implementer
 from zope.interface import provider
-from plone.autoform import directives as form
-from plone.app.z3cform.widget import RelatedItemsFieldWidget
-from plone.app.vocabularies.catalog import CatalogSource
+
 
 @provider(INameFromTitle)
 @adapter(IDexterityContent)
@@ -48,7 +49,7 @@ class IVereador(model.Schema):
             "lideranca",
             "corregedoria",
             "cargo_corregedoria",
-            "licenciado"
+            "licenciado",
         ],
     )
 
@@ -67,9 +68,7 @@ class IVereador(model.Schema):
     legislatura = schema.List(
         title="Legislatura",
         required=True,
-        value_type=schema.Choice(
-            vocabulary="camara_de_curitiba.legislaturas"
-        ),
+        value_type=schema.Choice(vocabulary="camara_de_curitiba.legislaturas"),
     )
 
     foto = namedfile.NamedBlobImage(
@@ -134,18 +133,19 @@ class IVereador(model.Schema):
         title="Notícias relacionadas",
         required=False,
         value_type=schema.Choice(
-            title="Notícia",
-            vocabulary="camara_de_curitiba.news_items"
+            title="Notícia", vocabulary="camara_de_curitiba.news_items"
         ),
     )
 
-    form.widget('noticias_relacionadas', RelatedItemsFieldWidget,
+    form.widget(
+        "noticias_relacionadas",
+        RelatedItemsFieldWidget,
         pattern_options={
-            'selectableTypes': ['News Item'],
-            'basePath': '/',
-            'mode': 'search',
-            'maximumSelectionSize': 20
-        }
+            "selectableTypes": ["News Item"],
+            "basePath": "/",
+            "mode": "search",
+            "maximumSelectionSize": 20,
+        },
     )
     directives.widget(partido=SelectFieldWidget)
     directives.widget(legislatura=SelectFieldWidget)

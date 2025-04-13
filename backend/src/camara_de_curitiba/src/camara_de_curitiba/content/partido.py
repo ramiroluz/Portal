@@ -8,21 +8,21 @@ class IPartido(model.Schema):
     """Marker interface and Dexterity Python Schema for Partido"""
 
     sigla = schema.TextLine(
-        title=u"Sigla",
+        title="Sigla",
         required=True,
     )
 
     nome = schema.TextLine(
-        title=u"Nome",
+        title="Nome",
         required=True,
     )
 
     logo = schema.URI(
-        title=u"URL do Logo",
+        title="URL do Logo",
         required=False,
     )
 
 
 @implementer(IPartido)
 class Partido(Container):
-    """Content-type class for IPartido""" 
+    """Content-type class for IPartido"""

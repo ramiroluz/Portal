@@ -3,6 +3,14 @@
   <permissions>
   <!-- -*- extra stuff goes here -*- -->
 
+    <permission name="camara_de_curitiba: Add Editoria" acquire="True">
+      <role name="Manager"/>
+      <role name="Site Administrator"/>
+      <role name="Owner"/>
+      <role name="Contributor"/>
+    </permission>
+
+
     <permission name="camara_de_curitiba: Add Vereador" acquire="True">
       <role name="Manager"/>
       <role name="Site Administrator"/>
