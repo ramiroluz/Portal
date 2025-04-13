@@ -69,6 +69,9 @@ const PartidosControlPanel = (props) => {
   const [formData, setFormData] = useState({ partidos: [] });
   const [uploading, setUploading] = useState(false);
   const partidos = state.controlpanels?.controlpanel?.items || [];
+  const isClient = typeof document !== 'undefined';
+
+
 
   const schema = {
     title: intl.formatMessage(messages.title),
@@ -189,7 +192,7 @@ const PartidosControlPanel = (props) => {
           formData={formData}
         />
       </div>
-      {createPortal(
+      {isClient && createPortal(
           <Toolbar
             pathname={props.pathname}
             hideDefaultViewButtons

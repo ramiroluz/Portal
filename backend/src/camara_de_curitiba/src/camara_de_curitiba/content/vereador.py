@@ -12,7 +12,9 @@ from zope import schema
 from zope.component import adapter
 from zope.interface import implementer
 from zope.interface import provider
-
+from plone.autoform import directives as form
+from plone.app.z3cform.widget import RelatedItemsFieldWidget
+from plone.app.vocabularies.catalog import CatalogSource
 
 @provider(INameFromTitle)
 @adapter(IDexterityContent)
@@ -37,9 +39,16 @@ class IVereador(model.Schema):
             "mandato",
             "foto",
             "video_principal",
+            "noticias_relacionadas",
             "perfil_do_vereador",
             "trabalho_parlamentar",
             "contatos",
+            "mesa_diretora",
+            "cargo_mesa_diretora",
+            "lideranca",
+            "corregedoria",
+            "cargo_corregedoria",
+            "licenciado"
         ],
     )
 
@@ -55,10 +64,12 @@ class IVereador(model.Schema):
         vocabulary="camara_de_curitiba.partidos",
     )
 
-    legislatura = schema.Choice(
+    legislatura = schema.List(
         title="Legislatura",
         required=True,
-        vocabulary="camara_de_curitiba.legislaturas",
+        value_type=schema.Choice(
+            vocabulary="camara_de_curitiba.legislaturas"
+        ),
     )
 
     foto = namedfile.NamedBlobImage(
@@ -87,6 +98,55 @@ class IVereador(model.Schema):
         required=False,
     )
 
+    mesa_diretora = schema.Bool(
+        title="Mesa Diretora",
+        required=False,
+    )
+
+    cargo_mesa_diretora = schema.TextLine(
+        title="Cargo na Mesa Diretora",
+        description="Somente se mesa diretora estiver selecionado",
+        required=False,
+    )
+
+    lideranca = schema.Bool(
+        title="Liderança",
+        required=False,
+    )
+
+    corregedoria = schema.Bool(
+        title="Corregedoria",
+        required=False,
+    )
+
+    cargo_corregedoria = schema.TextLine(
+        title="Cargo na Corregedoria",
+        description="Somente se corregedoria estiver selecionado",
+        required=False,
+    )
+
+    licenciado = schema.Bool(
+        title="Licenciado",
+        required=False,
+    )
+
+    noticias_relacionadas = schema.List(
+        title="Notícias relacionadas",
+        required=False,
+        value_type=schema.Choice(
+            title="Notícia",
+            vocabulary="camara_de_curitiba.news_items"
+        ),
+    )
+
+    form.widget('noticias_relacionadas', RelatedItemsFieldWidget,
+        pattern_options={
+            'selectableTypes': ['News Item'],
+            'basePath': '/',
+            'mode': 'search',
+            'maximumSelectionSize': 20
+        }
+    )
     directives.widget(partido=SelectFieldWidget)
     directives.widget(legislatura=SelectFieldWidget)
 

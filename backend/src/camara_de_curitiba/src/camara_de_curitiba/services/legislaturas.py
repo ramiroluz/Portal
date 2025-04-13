@@ -45,11 +45,12 @@ class LegislaturasPut(Service):
                 item["@id"] = str(uuid.uuid4())
             processed_items.append(item)
 
+        processed_items.sort(key=lambda x: x.get("ano_final", 0), reverse=True)
         registry = getUtility(IRegistry)
         settings = registry.forInterface(ILegislaturasSettings)
-        settings.items = processed_items
+        settings.legislaturas = processed_items
 
         return {
             "@id": f"{self.context.absolute_url()}/legislaturas",
-            "items": settings.items,
+            "items": settings.legislaturas,
         }

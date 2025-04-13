@@ -1,13 +1,16 @@
 <?xml version="1.0"?>
-<object name="portal_catalog">
-<!-- Index
-  <index meta_type="FieldIndex"
-         name="industry"
-  >
-    <indexed_attr value="industry" />
+<object name="portal_catalog" meta_type="Plone Catalog Tool">
+  <index name="portal_type" meta_type="FieldIndex">
+    <indexed_attr value="portal_type"/>
   </index>
--->
-<!-- Metadata
-  <column value="industry" />
--->
+  <index name="review_state" meta_type="FieldIndex">
+    <indexed_attr value="review_state"/>
+  </index>
+  <index name="created" meta_type="DateIndex">
+    <indexed_attr value="created"/>
+  </index>
+  <column value="portal_type"/>
+  <column value="review_state"/>
+  <column value="created"/>
+  <column value="path"/>
 </object>

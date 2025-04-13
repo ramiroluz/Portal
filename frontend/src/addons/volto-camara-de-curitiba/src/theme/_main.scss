@@ -1441,4 +1441,24 @@ figure {
   max-width: 64px;
   height: auto;
 }
+
+.text-transform-none {
+  text-transform: inherit !important;
+  letter-spacing: 0px !important;
+}
+
+.partido-list.logo-partido {
+  position: absolute;
+  bottom:8px;
+  border-radius: 50% !important;
+  right:8px;
+  width: 48px !important;
+  height: 48px !important;
+  transform: scale(1) !important;
+}
+
+.disabled-events {
+  opacity: 0.5;
+  pointer-events: none;
+}
 @import "mobile";

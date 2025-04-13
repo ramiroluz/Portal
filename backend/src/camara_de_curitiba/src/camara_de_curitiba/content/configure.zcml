@@ -44,6 +44,12 @@
       provides="zope.schema.interfaces.IVocabularyFactory"
       />
 
+  <utility
+      name="camara_de_curitiba.news_items"
+      component=".vocabularies.NewsItemsVocabularyFactory"
+      provides="zope.schema.interfaces.IVocabularyFactory"
+      />
+
   <browser:page
       name="vereador"
       for=".vereador.IVereador"

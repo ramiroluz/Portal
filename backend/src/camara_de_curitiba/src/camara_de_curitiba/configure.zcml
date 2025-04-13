@@ -9,14 +9,14 @@
     >
 
   <i18n:registerTranslations directory="locales" />
-    <!-- Primeiro inclui o meta.zcml que registra os namespaces -->
-    <include package="plone.dexterity" file="meta.zcml" />
+  <!-- Primeiro inclui o meta.zcml que registra os namespaces -->
+  <include package="plone.dexterity" file="meta.zcml" />
 
-    <!-- Agora sim pode incluir o resto do Dexterity -->
-    <include package="plone.dexterity" />
+  <!-- Agora sim pode incluir o resto do Dexterity -->
+  <include package="plone.dexterity" />
 
-    <!-- Registra o content type Vereador -->
-    <include package=".content" />
+  <!-- Registra o content type Vereador -->
+  <include package=".content" file="configure.zcml" />
 
   <include
       package="Products.CMFCore"
