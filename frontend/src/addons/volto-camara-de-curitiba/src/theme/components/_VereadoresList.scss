@@ -110,18 +110,18 @@
 
 .button-vereador {
   color: var(--Primary, #3E8A8E) !important;
-  text-align: center;
+  text-align: center !important;
 
   /* Button & Link/Text Small */
   font-family: Montserrat, sans-serif;
-  font-size: 12px;
+  font-size: 0.75rem !important;
   font-style: normal;
-  font-weight: 400;
-  line-height: 16px; /* 133.333% */
-  padding: 8px 24px;
-  border-radius: 8px;
-  border: 1px solid var(--Primary, #3E8A8E);
-  background: var(--Neutral-White, #FFF);
+  font-weight: 400 !important;
+  line-height: 1rem !important; /* 133.333% */
+  padding: 8px 24px !important;
+  border-radius: 8px !important;
+  border: 1px solid var(--Primary, #3E8A8E) !important;
+  background: var(--Neutral-White, #FFF) !important;
 }
 
 .max-w-161 {
