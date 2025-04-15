@@ -155,9 +155,11 @@ const VereadorItemView = (props) => {
                   <h2 className="mb-0 mt-0">
                     Pesquise os projetos de lei
                   </h2>
-                  <Button className="mt-24 button button-primary w-100">
-                    Acessar
-                  </Button>
+                  <div className="mt-24">
+                    <Button className="button button-primary w-100">
+                      Acessar
+                    </Button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -205,18 +207,22 @@ const VereadorItemView = (props) => {
                   <h2 className="mb-0 mt-0 fs-20 max-w-250">
                     Outros vereadores
                   </h2>
-                  <Button className="mt-24 button button-primary w-100">
-                    Acessar
-                  </Button>
+                  <div className="mt-24">
+                    <Button className="button button-primary w-100">
+                      Acessar
+                    </Button>
+                  </div>
                 </div>
 
                 <div className="mt-24 other-blocks-sd">
                   <h2 className="mb-0 mt-0 fs-20 max-w-250">
                     Líderes dos blocos e bancadas partidárias
                   </h2>
-                  <Button className="mt-24 button button-primary w-100">
-                    Acessar
-                  </Button>
+                  <div className="mt-24">
+                    <Button className="button button-primary w-100">
+                      Acessar
+                    </Button>
+                  </div>
                 </div>
 
               </div>
