@@ -29,7 +29,7 @@ LINT=docker run --rm -e LOG_LEVEL="${LOG_LEVEL}" -v "${BACKEND_FOLDER}":/github/
 FORMAT=docker run --rm --user="${USER_INFO}" -e LOG_LEVEL="${LOG_LEVEL}" -v "${BACKEND_FOLDER}":/github/workspace plone/code-quality:${CODE_QUALITY_VERSION} format
 
 IMAGE_NAME=ghcr.io/cmcuritiba/portal-backend
-IMAGE_TAG=latest
+IMAGE_TAG=0.1
 
 # Python checks
 PYTHON?=python3
