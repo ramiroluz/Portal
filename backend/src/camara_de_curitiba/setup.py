@@ -49,6 +49,7 @@ setup(
         "Plone",
         "prettyconf",
         "plone.api",
+        "plone.caching"
     ],
     extras_require={
         "test": [
