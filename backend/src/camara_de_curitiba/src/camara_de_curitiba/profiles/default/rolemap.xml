@@ -3,6 +3,15 @@
   <permissions>
   <!-- -*- extra stuff goes here -*- -->
 
+    <permission name="plone.restapi: Use REST API" acquire="True">
+      <role name="Manager"/>
+      <role name="Site Administrator"/>
+      <role name="Owner"/>
+      <role name="Member"/>
+      <role name="Authenticated"/>
+      <role name="Anonymous"/>
+    </permission>
+
     <permission name="camara_de_curitiba: Add Editoria" acquire="True">
       <role name="Manager"/>
       <role name="Site Administrator"/>
