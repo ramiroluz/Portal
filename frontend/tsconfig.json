@@ -40,7 +40,9 @@
             ],
             "volto-mui-banners": [
                 "addons/volto-mui-banners/src"
-            ]
+            ],
+            "browser": ["./browser"],
+            "querystring": ["./browser/querystring"]
         },
         "baseUrl": "src"
     },

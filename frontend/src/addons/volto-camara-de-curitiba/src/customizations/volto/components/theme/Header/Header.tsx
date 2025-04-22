@@ -140,8 +140,16 @@ const Header = (props) => {
             document.addEventListener("mousedown", handleClickOutside);
         }
 
+        // Adiciona dinamicamente o script ao <head>
+        const script = document.createElement("script");
+        script.src = "https://apps.elfsight.com/p/platform.js";
+        script.async = true;
+        document.head.appendChild(script);
+
+
         return () => {
             document.removeEventListener("mousedown", handleClickOutside);
+            document.head.removeChild(script);
         };
     }, [act]);
 
