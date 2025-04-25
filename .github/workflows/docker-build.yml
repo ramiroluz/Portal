@@ -7,7 +7,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
+  IMAGE_NAME: portal-backend
   PYTHON_VERSION: "3.11"
 
 jobs:
@@ -121,8 +121,8 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
-            type=raw,value=homolog-{date}
-            type=raw,value=homolog-{run_number}
+            type=raw,value=homolog
+            type=raw,value=homolog
           labels: |
             org.label-schema.docker.cmd=docker run -d -p 8080:8080 ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
 
