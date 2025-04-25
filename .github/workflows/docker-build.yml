@@ -101,12 +101,6 @@ jobs:
 
   build-and-push:
     runs-on: ubuntu-latest
-    needs:
-      - black
-      - flake8
-      - isort
-      - zpretty
-      - tests
     permissions:
       contents: read
       packages: write
@@ -147,4 +141,4 @@ jobs:
           file: backend/Dockerfile
           push: true
           tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }} 
+          labels: ${{ steps.meta.outputs.labels }}
