@@ -126,7 +126,7 @@ jobs:
             type=raw,value=homolog
             type=raw,value=homolog
           labels: |
-            org.label-schema.docker.cmd=docker run -d -p 8080:8080 ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+            org.label-schema.docker.cmd=docker run -d -p 8080:8080 ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:homolog
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
