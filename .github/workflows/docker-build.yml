@@ -7,7 +7,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: portal-backend
+  IMAGE_NAME: cmcuritiba/portal-backend
   PYTHON_VERSION: "3.11"
 
 jobs:
