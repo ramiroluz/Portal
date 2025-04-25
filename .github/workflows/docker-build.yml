@@ -24,6 +24,7 @@ jobs:
         run: |
           echo "PLONE_VERSION=$(cat backend/version.txt)" >> $GITHUB_OUTPUT
 
+
   black:
     runs-on: ubuntu-latest
     steps:
@@ -86,6 +87,7 @@ jobs:
       - name: Run tests
         run: |
           pytest --disable-warnings src/camara_de_curitiba/tests
+
 
   build-and-push:
     runs-on: ubuntu-latest
