@@ -7,7 +7,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: cmcuritiba/portal-backend
+  IMAGE_NAME: ${{ github.repository }}-backend
   PYTHON_VERSION: "3.11"
 
 jobs:
@@ -23,7 +23,6 @@ jobs:
         id: vars
         run: |
           echo "PLONE_VERSION=$(cat backend/version.txt)" >> $GITHUB_OUTPUT
-
 
   black:
     runs-on: ubuntu-latest
@@ -88,7 +87,6 @@ jobs:
         run: |
           pytest --disable-warnings src/camara_de_curitiba/tests
 
-
   build-and-push:
     runs-on: ubuntu-latest
     needs:
@@ -126,7 +124,7 @@ jobs:
             type=raw,value=homolog
             type=raw,value=homolog
           labels: |
-            org.label-schema.docker.cmd=docker run -d -p 8080:8080 ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:homolog
+            org.label-schema.docker.cmd=docker run -d -p 8080:8080 ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
