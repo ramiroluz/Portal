@@ -1,4 +1,5 @@
 """Installer for the camara_de_curitiba package."""
+
 from pathlib import Path
 from setuptools import find_packages
 from setuptools import setup
@@ -49,7 +50,7 @@ setup(
         "Plone",
         "prettyconf",
         "plone.api",
-        "plone.caching"
+        "plone.caching",
     ],
     extras_require={
         "test": [
