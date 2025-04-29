@@ -99,6 +99,11 @@ jobs:
       packages: write
 
     steps:
+      - name: Debug GitHub Actions secrets
+        run: |
+          echo "GitHub Actor: ${{ github.actor }}"
+          echo "Registry: ${{ env.REGISTRY }}"
+          echo "Token is set: ${{ secrets.develop.DEV_GHCR_TOKEN != '' }}"
       - name: Checkout repository
         uses: actions/checkout@v4
 
