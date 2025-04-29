@@ -24,7 +24,7 @@ class Layer(PloneSandboxLayer):
         self.loadZCML(package=plone.restapi)
         self.loadZCML(package=pas.plugins.oidc)
         self.loadZCML(package=camara_de_curitiba)
-        quickInstallProduct(app.plone, 'pas.plugins.oidc')
+        quickInstallProduct(app.plone, "pas.plugins.oidc")
 
     def setUpPloneSite(self, portal):
         applyProfile(portal, "camara_de_curitiba:default")
