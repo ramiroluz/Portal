@@ -7,7 +7,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}-backend
+  IMAGE_NAME: ${{ github.repository }}/backend
   PYTHON_VERSION: "3.11"
 
 jobs:
@@ -99,11 +99,6 @@ jobs:
       packages: write
 
     steps:
-      - name: Debug GitHub Actions secrets
-        run: |
-          echo "GitHub Actor: ${{ github.actor }}"
-          echo "Registry: ${{ env.REGISTRY }}"
-          echo "Token is set: ${{ secrets.develop.DEV_GHCR_TOKEN != '' }}"
       - name: Checkout repository
         uses: actions/checkout@v4
 
@@ -118,7 +113,7 @@ jobs:
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
-          password: ${{ secrets.develop.DEV_GHCR_TOKEN }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Extract metadata (tags, labels) for Docker
         id: meta
