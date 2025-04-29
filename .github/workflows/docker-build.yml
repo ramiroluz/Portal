@@ -2,12 +2,12 @@ name: Docker Build and Push
 
 on:
   push:
-    branches: [ "homolog" ]
+    branches: [ "develop" ]
   workflow_dispatch:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}-backend
+  IMAGE_NAME: ${{ github.repository }}/backend
   PYTHON_VERSION: "3.11"
 
 jobs:
