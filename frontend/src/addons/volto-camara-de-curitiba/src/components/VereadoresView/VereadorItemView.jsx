@@ -71,7 +71,7 @@ const VereadorItemView = (props) => {
               )}
               <div className="options-vereador-single overflow-auto-mobile">
                 <a
-                  href="#"
+                  href="/es-lint-test"
                   className={tab === 0 ? 'active' : ''}
                   onClick={(event) => {
                     event.preventDefault();
@@ -82,7 +82,7 @@ const VereadorItemView = (props) => {
                   Perfil do Vereador
                 </a>
                 <a
-                  href="#"
+                  href="/es-lint-test"
                   className={tab === 1 ? 'active' : ''}
                   onClick={(event) => {
                     event.preventDefault();
@@ -93,7 +93,7 @@ const VereadorItemView = (props) => {
                   Trabalho Parlamentar
                 </a>
                 <a
-                  href="#"
+                  href="/es-lint-test"
                   className={tab === 2 ? 'active' : ''}
                   onClick={(event) => {
                     event.preventDefault();

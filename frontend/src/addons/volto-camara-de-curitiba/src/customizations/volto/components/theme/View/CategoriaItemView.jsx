@@ -74,7 +74,10 @@ const CategoriaItemView = ({ content }) => {
                   </h3>
                 </div>
                 <div>
-                  <a className="button-secondary px-62 button-small" href="#">
+                  <a
+                    className="button-secondary px-62 button-small"
+                    href="/es-lint-test"
+                  >
                     Leia mais
                   </a>
                 </div>
@@ -99,7 +102,10 @@ const CategoriaItemView = ({ content }) => {
                   </h3>
                 </div>
                 <div>
-                  <a className="button-secondary px-62 button-small" href="#">
+                  <a
+                    className="button-secondary px-62 button-small"
+                    href="/es-lint-test"
+                  >
                     Leia mais
                   </a>
                 </div>
@@ -124,7 +130,10 @@ const CategoriaItemView = ({ content }) => {
                   </h3>
                 </div>
                 <div>
-                  <a className="button-secondary px-62 button-small" href="#">
+                  <a
+                    className="button-secondary px-62 button-small"
+                    href="/es-lint-test"
+                  >
                     Leia mais
                   </a>
                 </div>

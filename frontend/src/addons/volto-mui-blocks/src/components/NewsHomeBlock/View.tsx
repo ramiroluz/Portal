@@ -1,18 +1,35 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { withBlockExtensions } from '@plone/volto/helpers';
 import { Link } from 'react-router-dom';
 import Stack from '@mui/material/Stack';
 import './style.less';
-import config from '@plone/volto/registry';
-import { flattenToAppURL } from '@plone/volto/helpers';
-import { Card, Typography, Button } from '@mui/material';
-import Grid from '@mui/material/Grid2';
+import { Card, Typography } from '@mui/material';
 
-const Image = config.getComponent({ name: 'Image' }).component;
+interface ViewProps {
+  isEditMode?: boolean;
+}
 
-const View = (props) => {
-  const { data, isEditMode, className, block, classes } = props;
-  const Image = config.getComponent('Image').component;
+interface CustomLinkProps {
+  to: string;
+  onClick?: (e: React.MouseEvent) => void;
+  children: React.ReactNode;
+}
+
+const CustomLink: React.FC<CustomLinkProps> = ({ to, onClick, children }) => {
+  return (
+    <Link to={to} onClick={onClick}>
+      {children}
+    </Link>
+  );
+};
+
+const View: React.FC<ViewProps> = ({ isEditMode }) => {
+  const handleClick = (e: React.MouseEvent) => {
+    if (isEditMode) {
+      e.preventDefault();
+    }
+  };
+
   return (
     <div className="stack gap-24">
       <div className="card-default">
@@ -31,17 +48,12 @@ const View = (props) => {
               Legislação e Projetos de Lei
             </Typography>
           </Stack>
-          <Link
-            to="/"
-            onClick={(e) => {
-              isEditMode ? e.preventDefault() : '';
-            }}
-          >
+          <CustomLink to="/" onClick={handleClick}>
             <Typography variant="h2">
               Flexibilização da publicidade em eventos esportivos entrará em
               vigor em 2025
             </Typography>
-          </Link>
+          </CustomLink>
           <Typography className="excerpt">
             A regulamentação foi aprovada pela Câmara Municipal de Curitiba em
             outubro.
@@ -51,14 +63,13 @@ const View = (props) => {
           </Typography>
         </Stack>
         <Stack className="thumbnail">
-          <Link
-            to="/"
-            onClick={(e) => {
-              isEditMode ? e.preventDefault() : '';
-            }}
-          >
-            <img src="/images/mock/img.png" alt="" loading="lazy" />
-          </Link>
+          <CustomLink to="/" onClick={handleClick}>
+            <img
+              src="/images/mock/img.png"
+              alt="Flexibilização da publicidade em eventos esportivos"
+              loading="lazy"
+            />
+          </CustomLink>
         </Stack>
       </div>
       <Stack direction="row" sx={{ gap: '24px' }}>
@@ -75,31 +86,24 @@ const View = (props) => {
                   py: 0.5,
                 }}
               >
-                {' '}
                 Audiências Públicas e Comissões
               </Typography>
             </Stack>
-            <Link
-              to="/"
-              onClick={(e) => {
-                isEditMode ? e.preventDefault() : '';
-              }}
-            >
+            <CustomLink to="/" onClick={handleClick}>
               <Typography variant="h2">
                 Dia da Parada da Diversidade LGBTI+ de Curitiba ganha
                 substitutivo geral
               </Typography>
-            </Link>
+            </CustomLink>
           </Stack>
           <Stack className="thumbnail">
-            <Link
-              to="/"
-              onClick={(e) => {
-                isEditMode ? e.preventDefault() : '';
-              }}
-            >
-              <img src="/images/news/news-2.png" alt="" loading="lazy" />
-            </Link>
+            <CustomLink to="/" onClick={handleClick}>
+              <img
+                src="/images/news/news-2.png"
+                alt="Parada da Diversidade LGBTI+"
+                loading="lazy"
+              />
+            </CustomLink>
           </Stack>
         </Card>
         <Card className="card-default small">
@@ -115,31 +119,24 @@ const View = (props) => {
                   py: 0.5,
                 }}
               >
-                {' '}
                 Conheça os Vereadores
               </Typography>
             </Stack>
-            <Link
-              to="/"
-              onClick={(e) => {
-                isEditMode ? e.preventDefault() : '';
-              }}
-            >
+            <CustomLink to="/" onClick={handleClick}>
               <Typography variant="h2">
                 Servidores de Curitiba: reajuste de 4,42% será votado em
                 urgência
               </Typography>
-            </Link>
+            </CustomLink>
           </Stack>
           <Stack className="thumbnail">
-            <Link
-              to="/"
-              onClick={(e) => {
-                isEditMode ? e.preventDefault() : '';
-              }}
-            >
-              <img src="/images/news/news-3.png" alt="" loading="lazy" />
-            </Link>
+            <CustomLink to="/" onClick={handleClick}>
+              <img
+                src="/images/news/news-3.png"
+                alt="Reajuste dos servidores de Curitiba"
+                loading="lazy"
+              />
+            </CustomLink>
           </Stack>
         </Card>
       </Stack>
@@ -148,14 +145,13 @@ const View = (props) => {
           <Stack sx={{ p: '24px', gap: '24px' }}>
             <Stack direction="row" alignItems="center" spacing={3}>
               <Stack className="thumbnail">
-                <Link
-                  to="/"
-                  onClick={(e) => {
-                    isEditMode ? e.preventDefault() : '';
-                  }}
-                >
-                  <img src="/images/news/news-4.png" alt="" loading="lazy" />
-                </Link>
+                <CustomLink to="/" onClick={handleClick}>
+                  <img
+                    src="/images/news/news-4.png"
+                    alt="Homenagem a personalidades negras"
+                    loading="lazy"
+                  />
+                </CustomLink>
               </Stack>
               <Stack spacing={3}>
                 <Stack direction="row" justifyContent="flex-start">
@@ -169,34 +165,27 @@ const View = (props) => {
                       py: 0.5,
                     }}
                   >
-                    {' '}
                     Saúde e assistência social
                   </Typography>
                 </Stack>
-                <Link
-                  to="/"
-                  onClick={(e) => {
-                    isEditMode ? e.preventDefault() : '';
-                  }}
-                >
+                <CustomLink to="/" onClick={handleClick}>
                   <Typography variant="h2">
                     Personalidades negras de Curitiba são homenageadas na Câmara
                     Municipal
                   </Typography>
-                </Link>
+                </CustomLink>
               </Stack>
             </Stack>
             <div className="divider"></div>
             <Stack direction="row" alignItems="center" spacing={3}>
               <Stack className="thumbnail">
-                <Link
-                  to="/"
-                  onClick={(e) => {
-                    isEditMode ? e.preventDefault() : '';
-                  }}
-                >
-                  <img src="/images/news/news-5.png" alt="" loading="lazy" />
-                </Link>
+                <CustomLink to="/" onClick={handleClick}>
+                  <img
+                    src="/images/news/news-5.png"
+                    alt="Programa Alimento Solidário"
+                    loading="lazy"
+                  />
+                </CustomLink>
               </Stack>
               <Stack spacing={3}>
                 <Stack direction="row" justifyContent="flex-start">
@@ -210,34 +199,27 @@ const View = (props) => {
                       py: 0.5,
                     }}
                   >
-                    {' '}
                     Legislação e Projetos de Lei
                   </Typography>
                 </Stack>
-                <Link
-                  to="/"
-                  onClick={(e) => {
-                    isEditMode ? e.preventDefault() : '';
-                  }}
-                >
+                <CustomLink to="/" onClick={handleClick}>
                   <Typography variant="h2">
                     Curitiba vai implantar Programa Alimento Solidário daqui a
                     seis meses
                   </Typography>
-                </Link>
+                </CustomLink>
               </Stack>
             </Stack>
             <div className="divider"></div>
             <Stack direction="row" alignItems="center" spacing={3}>
               <Stack className="thumbnail">
-                <Link
-                  to="/"
-                  onClick={(e) => {
-                    isEditMode ? e.preventDefault() : '';
-                  }}
-                >
-                  <img src="/images/news/news-6.png" alt="" loading="lazy" />
-                </Link>
+                <CustomLink to="/" onClick={handleClick}>
+                  <img
+                    src="/images/news/news-6.png"
+                    alt="Notícias da Câmara"
+                    loading="lazy"
+                  />
+                </CustomLink>
               </Stack>
               <Stack spacing={3}>
                 <Stack direction="row" justifyContent="flex-start">
@@ -251,63 +233,16 @@ const View = (props) => {
                       py: 0.5,
                     }}
                   >
-                    Segurança e Mobilidade Urbana
+                    Notícias
                   </Typography>
                 </Stack>
-                <Link
-                  to="/"
-                  onClick={(e) => {
-                    isEditMode ? e.preventDefault() : '';
-                  }}
-                >
+                <CustomLink to="/" onClick={handleClick}>
                   <Typography variant="h2">
-                    Curitiba vai implantar Programa Alimento Solidário daqui a
-                    seis meses
+                    Últimas notícias da Câmara Municipal de Curitiba
                   </Typography>
-                </Link>
+                </CustomLink>
               </Stack>
             </Stack>
-            <div className="divider"></div>
-            <Stack direction="row" alignItems="center" spacing={3}>
-              <Stack className="thumbnail">
-                <Link
-                  to="/"
-                  onClick={(e) => {
-                    isEditMode ? e.preventDefault() : '';
-                  }}
-                >
-                  <img src="/images/news/news-7.png" alt="" loading="lazy" />
-                </Link>
-              </Stack>
-              <Stack spacing={3}>
-                <Stack direction="row" justifyContent="flex-start">
-                  <Typography
-                    className="tag"
-                    sx={{
-                      backgroundColor: '#009262',
-                      color: 'white',
-                      borderRadius: '8px',
-                      px: 1,
-                      py: 0.5,
-                    }}
-                  >
-                    Segurança e Mobilidade Urbana
-                  </Typography>
-                </Stack>
-                <Link
-                  to="/"
-                  onClick={(e) => {
-                    isEditMode ? e.preventDefault() : '';
-                  }}
-                >
-                  <Typography variant="h2">
-                    Curitiba vai implantar Programa Alimento Solidário daqui a
-                    seis meses
-                  </Typography>
-                </Link>
-              </Stack>
-            </Stack>
-            <Button className="button-primary">Veja todas as matérias</Button>
           </Stack>
         </Card>
       </Stack>

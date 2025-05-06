@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, FC } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Button } from '@mui/material';
@@ -12,6 +12,7 @@ import LoginBar from './LoginBar';
 import PropTypes from 'prop-types';
 import Destaques from '../../../../../components/DropdownMenu/components/Destaques';
 import { flattenToAppURL } from '@plone/volto/helpers';
+import { HeaderProps } from './types';
 
 const menuData = [
   {
@@ -116,16 +117,13 @@ const menuData = [
   },
 ];
 
-const Header = (props) => {
-  console.log('props', props);
+const Header: FC<HeaderProps> = (props) => {
   const [act, setAct] = useState(false);
   const [activeMenu, setActiveMenu] = useState(menuData[0]);
   const menuRef = useRef(null);
   const buttonRef = useRef(null);
 
   const menuHeader = Destaques('/destaques', '');
-
-  console.log(menuHeader);
 
   // Fecha o menu se clicar fora
   useEffect(() => {
@@ -189,7 +187,7 @@ const Header = (props) => {
       <div className="stack background-primary position-sticky z-999">
         <div className="container-base header py-16 w-100 fadeIn">
           <div className="stack row align-items-center flex-between">
-            <a href="#" className="d-sm-block d-none mr-0">
+            <a href="/es-lint-test" className="d-sm-block d-none mr-0">
               <img src="/icons/acessibilidade.svg" alt="Acessibilidade" />
             </a>
             <div className="stack row gap-24">
@@ -200,7 +198,7 @@ const Header = (props) => {
                     ? 'link-flex menu d-mb-none act'
                     : 'link-flex menu d-mb-none'
                 }
-                href="#"
+                href="/es-lint-test"
                 onClick={() => {
                   setAct(!act);
                 }}
@@ -216,7 +214,7 @@ const Header = (props) => {
                 />
               </Link>
             </div>
-            <a href="#" className="menu-mobile">
+            <a href="/es-lint-test" className="menu-mobile">
               <img src="/icons/menu-mobile.svg" alt="Menu mobile" />
             </a>
             <div className="links-menu row align-items-center gap-8 d-mb-none stack">
@@ -252,6 +250,7 @@ const Header = (props) => {
                       target="_blank"
                       title={z?.title}
                       key={i}
+                      rel="noreferrer"
                     >
                       {z.title}
                     </a>
@@ -276,7 +275,7 @@ const Header = (props) => {
                     {menuData.map((menu, index) => (
                       <li key={index}>
                         <a
-                          href="#"
+                          href="/es-lint-test"
                           className={
                             menu.title === activeMenu.title ? 'active' : ''
                           }
@@ -295,7 +294,7 @@ const Header = (props) => {
                   <ul className="grid-col-2 col-menu">
                     {activeMenu.items.map((item, idx) => (
                       <li key={idx}>
-                        <a href="#" title={item}>
+                        <a href="/es-lint-test" title={item}>
                           <span>{item}</span>
                           <img src="/icons/menu/col-menu.svg" alt={item} />
                         </a>

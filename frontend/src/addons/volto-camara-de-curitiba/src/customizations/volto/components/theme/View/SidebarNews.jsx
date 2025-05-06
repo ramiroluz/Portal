@@ -24,7 +24,7 @@ function SidebarNews() {
             <div className="flex gap-16">
               <span>01.</span>
               <div className="card-default px-24 py-24">
-                <a href="#">
+                <a href="/es-lint-test">
                   <h3 className="fs-24 text-black fw-600">
                     Curitiba Avança com Projeto de Cidade Inteligente para
                     Melhorar Serviços Públicos
@@ -37,7 +37,7 @@ function SidebarNews() {
             <div className="flex gap-16">
               <span>02.</span>
               <div className="card-default px-24 py-24">
-                <a href="#">
+                <a href="/es-lint-test">
                   <h3 className="fs-24 text-black fw-600">
                     Comissão de Constituição e Justiça Avalia Nova Proposta de
                     Reforma Tributáriat
@@ -50,7 +50,7 @@ function SidebarNews() {
             <div className="flex gap-16">
               <span>03.</span>
               <div className="card-default px-24 py-24">
-                <a href="#">
+                <a href="/es-lint-test">
                   <h3 className="fs-24 text-black fw-600">
                     Sessão Plenária Homenageia Personalidades que Contribuíram
                     para o Desenvolvimento de Curitiba

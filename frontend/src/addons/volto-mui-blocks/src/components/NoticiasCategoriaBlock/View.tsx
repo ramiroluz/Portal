@@ -1,17 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { withBlockExtensions } from '@plone/volto/helpers';
-import { Link } from 'react-router-dom';
-import Stack from '@mui/material/Stack';
-import './style.less';
 import config from '@plone/volto/registry';
-import { flattenToAppURL } from '@plone/volto/helpers';
-import { Button, Card } from '@mui/material';
+import './style.less';
 
-const Image = config.getComponent({ name: 'Image' }).component;
-
-const View = (props) => {
-  const { data, isEditMode, className, block, classes } = props;
-  const Image = config.getComponent('Image').component;
+const View = () => {
   return (
     <div className="stack gap-24 news-noticia">
       <div className="container">
@@ -20,7 +12,10 @@ const View = (props) => {
             <div className="destaque destaques-home">
               <div className="card-default px-24 py-24">
                 <div className="thumbnail">
-                  <img src="/images/mock/img.png" alt="" />
+                  <img
+                    src="/images/mock/img.png"
+                    alt="Imagem da notícia em destaque"
+                  />
                 </div>
                 <div className="mt-16">
                   <h2 className="text-black fs-32 fw-600 title-32">
@@ -40,7 +35,11 @@ const View = (props) => {
             <div className="destaques grid-col-2 gap-24">
               <div className="card-default py-24 px-24">
                 <div>
-                  <img className="mt-8" src="/images/mock/img.png" alt="" />
+                  <img
+                    className="mt-8"
+                    src="/images/mock/img.png"
+                    alt="Imagem da notícia"
+                  />
                   <div className="mt-16">
                     <h2 className="title-32">
                       Vereadores Criam Fórum para Debater Inclusão Social da
@@ -51,7 +50,11 @@ const View = (props) => {
               </div>
               <div className="card-default py-24 px-24">
                 <div>
-                  <img className="mt-8" src="/images/mock/img.png" alt="" />
+                  <img
+                    className="mt-8"
+                    src="/images/mock/img.png"
+                    alt="Imagem da notícia"
+                  />
                   <div className="mt-16">
                     <h2 className="title-32">
                       Vereadores Criam Fórum para Debater Inclusão Social da
@@ -62,7 +65,11 @@ const View = (props) => {
               </div>
               <div className="card-default py-24 px-24">
                 <div>
-                  <img className="mt-8" src="/images/mock/img.png" alt="" />
+                  <img
+                    className="mt-8"
+                    src="/images/mock/img.png"
+                    alt="Imagem da notícia"
+                  />
                   <div className="mt-16">
                     <h2 className="title-32">
                       Vereadores Criam Fórum para Debater Inclusão Social da
@@ -73,7 +80,11 @@ const View = (props) => {
               </div>
               <div className="card-default py-24 px-24">
                 <div>
-                  <img className="mt-8" src="/images/mock/img.png" alt="" />
+                  <img
+                    className="mt-8"
+                    src="/images/mock/img.png"
+                    alt="Imagem da notícia"
+                  />
                   <div className="mt-16">
                     <h2 className="title-32">
                       Vereadores Criam Fórum para Debater Inclusão Social da
@@ -92,7 +103,7 @@ const View = (props) => {
                   <div className="flex gap-16">
                     <span>01.</span>
                     <div className="card-default px-24 py-24">
-                      <a href="#">
+                      <a href="/noticias/curitiba-avanca-cidade-inteligente">
                         <h3 className="fs-24 text-black fw-600">
                           Curitiba Avança com Projeto de Cidade Inteligente para
                           Melhorar Serviços Públicos
@@ -105,7 +116,7 @@ const View = (props) => {
                   <div className="flex gap-16">
                     <span>02.</span>
                     <div className="card-default px-24 py-24">
-                      <a href="#">
+                      <a href="/noticias/comissao-constituicao-justica">
                         <h3 className="fs-24 text-black fw-600">
                           Comissão de Constituição e Justiça Avalia Nova
                           Proposta de Reforma Tributáriat
@@ -118,7 +129,7 @@ const View = (props) => {
                   <div className="flex gap-16">
                     <span>03.</span>
                     <div className="card-default px-24 py-24">
-                      <a href="#">
+                      <a href="/noticias/sessao-plenaria-homenagens">
                         <h3 className="fs-24 text-black fw-600">
                           Sessão Plenária Homenageia Personalidades que
                           Contribuíram para o Desenvolvimento de Curitiba

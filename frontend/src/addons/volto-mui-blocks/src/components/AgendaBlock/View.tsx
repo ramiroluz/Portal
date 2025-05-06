@@ -39,7 +39,8 @@ const View = (props) => {
             <div className="card-default card">
               <div className="position-relative">
                 <img
-                  src="/images/agenda/agenda-1.jpg"
+                  src={data?.image}
+                  alt="Imagem da Agenda"
                   className="w-100 aspect-ratio-16-9"
                 />
                 <div className="agenda-data">
@@ -103,7 +104,8 @@ const View = (props) => {
             <div className="card-default card">
               <div className="position-relative">
                 <img
-                  src="/images/agenda/agenda-2.png"
+                  src={data?.image}
+                  alt="Imagem da Agenda"
                   className="w-100 aspect-ratio-16-9"
                 />
                 <div className="agenda-data">
@@ -182,7 +184,8 @@ const View = (props) => {
             <div className="card-default card">
               <div className="position-relative">
                 <img
-                  src="/images/agenda/agenda-1.jpg"
+                  src={data?.image}
+                  alt="Imagem da Agenda"
                   className="w-100 aspect-ratio-16-9"
                 />
                 <div className="agenda-data">

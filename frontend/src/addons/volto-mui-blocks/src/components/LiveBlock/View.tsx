@@ -57,6 +57,7 @@ const View = (props) => {
             ))}
           {!isEditMode && data?.youtube && (
             <iframe
+              title="Live Stream"
               frameborder="0"
               src={createYouTubeEmbed(data?.youtube)}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

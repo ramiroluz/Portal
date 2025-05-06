@@ -176,6 +176,7 @@ const View = (props) => {
                             createYouTubeEmbed(podcasts[podcastSelect]?.link) +
                             (autoPlayUseEffectP ? '?autoplay=1' : '')
                           }
+                          title="Video"
                           frameBorder="0"
                           allowFullScreen="true"
                           allow="autoplay"
