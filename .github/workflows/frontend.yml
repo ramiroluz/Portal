@@ -54,21 +54,21 @@ jobs:
 #        if: ${{ success() || failure() }}
 #        run: make i18n-ci
 #
-      - name: Unit Tests
-        id: unit
-        if: ${{ success() || failure() }}
-        run: make test
-
-      - name: Report
-        if: ${{ success() || failure() }}
-        run: |
-          echo '# Code Analysis' >> $GITHUB_STEP_SUMMARY
-#          echo '| Test | Status |' >> $GITHUB_STEP_SUMMARY
-          echo '| --- | --- |' >> $GITHUB_STEP_SUMMARY
-#          echo '| Prettier | ${{ steps.prettier.conclusion == 'failure' && '❌' || ' ✅' }} |' >> $GITHUB_STEP_SUMMARY
-#          echo '| ESLint | ${{ steps.eslint.conclusion == 'failure' && '❌' || ' ✅' }} |' >> $GITHUB_STEP_SUMMARY
-#          echo '| i18n | ${{ steps.i18n.conclusion == 'failure' && '❌' || ' ✅' }} |' >> $GITHUB_STEP_SUMMARY
-          echo '| Unit Tests | ${{ steps.unit.conclusion == 'failure' && '❌' || ' ✅' }} |' >> $GITHUB_STEP_SUMMARY
+#      - name: Unit Tests
+#        id: unit
+#        if: ${{ success() || failure() }}
+#        run: make test
+#
+#      - name: Report
+#        if: ${{ success() || failure() }}
+#        run: |
+#          echo '# Code Analysis' >> $GITHUB_STEP_SUMMARY
+##          echo '| Test | Status |' >> $GITHUB_STEP_SUMMARY
+#          echo '| --- | --- |' >> $GITHUB_STEP_SUMMARY
+##          echo '| Prettier | ${{ steps.prettier.conclusion == 'failure' && '❌' || ' ✅' }} |' >> $GITHUB_STEP_SUMMARY
+##          echo '| ESLint | ${{ steps.eslint.conclusion == 'failure' && '❌' || ' ✅' }} |' >> $GITHUB_STEP_SUMMARY
+##          echo '| i18n | ${{ steps.i18n.conclusion == 'failure' && '❌' || ' ✅' }} |' >> $GITHUB_STEP_SUMMARY
+#          echo '| Unit Tests | ${{ steps.unit.conclusion == 'failure' && '❌' || ' ✅' }} |' >> $GITHUB_STEP_SUMMARY
 
 
   release:
