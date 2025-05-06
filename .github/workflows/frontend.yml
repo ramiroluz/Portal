@@ -89,9 +89,11 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: |
-            ${{ env.IMAGE_NAME_PREFIX }}:${{ env.IMAGE_NAME_SUFFIX }}
+            ghcr.io/${{ github.repository }}/frontend
+          tags: |
+            homolog
           labels: |
-            org.label-schema.docker.cmd=docker run -d -p 3000:3000 ${{ env.IMAGE_NAME_PREFIX }}:${{env.IMAGE_NAME_SUFFIX}}
+            org.label-schema.docker.cmd=docker run -d -p 3000:3000 ghcr.io/${{ github.repository }}/frontend:homolog
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
