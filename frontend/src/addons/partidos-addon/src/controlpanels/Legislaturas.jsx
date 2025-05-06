@@ -1,25 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { defineMessages, injectIntl } from 'react-intl';
 import { schemaLegislaturas } from '../schemaLegislaturas';
 import { BlockDataForm } from '@plone/volto/components/manage/Form';
-import { Button, Message } from 'semantic-ui-react';
-import config from '@plone/volto/registry';
-import { useDispatch, useSelector } from 'react-redux';
+import { Button } from 'semantic-ui-react';
 import {
   GET_CONTROLPANEL,
   UPDATE_CONTROLPANEL,
 } from '@plone/volto/constants/ActionTypes';
-import { createContent } from '@plone/volto/actions';
 import {
-  BlockSettingsSidebar,
   Icon,
-  SidebarPortal,
   Toast,
   Toolbar,
 } from '@plone/volto/components';
 import { toast } from 'react-toastify';
-import { useLocation } from 'react-router-dom';
 import { createPortal } from 'react-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import saveSVG from '@plone/volto/icons/save.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 
@@ -71,14 +66,40 @@ const put = (url, data) => {
   };
 };
 
+const handleFileUpload = async (file) => {
+  try {
+    const formData = new FormData();
+    formData.append('file', file);
+
+    const response = await fetch('/++api++/@upload', {
+      method: 'POST',
+      body: formData,
+    });
+
+    if (!response.ok) {
+      throw new Error('Erro ao fazer upload do arquivo');
+    }
+
+    const data = await response.json();
+    return data['@id'] || data.url;
+  } catch (error) {
+    toast.error(<Toast error title="Erro no upload" content={error.message} />);
+    throw error;
+  }
+};
+
 const LegislaturasControlPanel = (props) => {
   const { intl } = props;
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
   const [formData, setFormData] = useState({ partidos: [] });
   const [uploading, setUploading] = useState(false);
-  const legislaturas = state.controlpanels?.controlpanel?.items || [];
   const isClient = typeof document !== 'undefined';
+
+  const legislaturas = useMemo(
+    () => state.controlpanels?.controlpanel?.items || [],
+    [state.controlpanels?.controlpanel?.items]
+  );
 
   const schema = {
     title: intl.formatMessage(messages.title),
@@ -102,8 +123,6 @@ const LegislaturasControlPanel = (props) => {
   };
 
   const onChangeField = async (id, value) => {
-    console.log('Valor alterado:', value);
-
     // Se o valor for um arquivo, fazer upload
     if (id === 'partidos' && Array.isArray(value)) {
       const updatedPartidos = await Promise.all(
@@ -145,7 +164,6 @@ const LegislaturasControlPanel = (props) => {
     dispatch(get('++api++/@legislaturas'));
   }, [dispatch]);
 
-  // Atualizar o formData quando os partidos mudarem
   useEffect(() => {
     if (legislaturas.length > 0) {
       setFormData({ legislaturas });

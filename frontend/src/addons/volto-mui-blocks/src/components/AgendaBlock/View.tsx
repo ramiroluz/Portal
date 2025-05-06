@@ -1,22 +1,25 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { withBlockExtensions } from '@plone/volto/helpers';
-import { Link } from 'react-router-dom';
-import Stack from '@mui/material/Stack';
+import { Button } from '@mui/material';
 import './style.less';
-import config from '@plone/volto/registry';
-import { flattenToAppURL } from '@plone/volto/helpers';
 
-const Image = config.getComponent({ name: 'Image' }).component;
+interface AgendaBlockProps {
+  data: {
+    image?: string;
+  };
+}
 
-const View = (props) => {
-  const { data, isEditMode, className, block, classes } = props;
-  const Image = config.getComponent('Image').component;
+const View = ({ data }: AgendaBlockProps): JSX.Element => {
   return (
     <section className="stack gap-24 max-w-100 py-48">
       <div className="container w-100-w">
         <h2 className="title-back fw-600 flex flex-between w-100 align-items-center">
           O Que Vem por Aí
-          <a className="ver-mais-flex">
+          <Button
+            href="/agenda"
+            className="ver-mais-flex"
+            component="a"
+          >
             Ver todos
             <svg
               width="32"
@@ -32,7 +35,7 @@ const View = (props) => {
                 fill="white"
               />
             </svg>
-          </a>
+          </Button>
         </h2>
         <div className="mt-40">
           <div className="grid-col-3 gap-32 overflow-auto-mobile child-75vw">
@@ -50,10 +53,7 @@ const View = (props) => {
               </div>
               <div className="px-16 py-16 stack flex-column gap-16 flex-between align-items-start flex-auto">
                 <div className="flex-1-auto stack flex-column gap-16 flex-start align-items-start">
-                  <span
-                    className="tag-color inline-block"
-                    style={{ 'background-color': '#007AFF', color: 'white' }}
-                  >
+                  <span className="tag-color inline-block tag-sessoes-plenarias">
                     Sessões plenárias
                   </span>
                   <h3 className="fs-18 fw-600 mt-0 mb-0">Sessão Ordinária</h3>
@@ -85,20 +85,26 @@ const View = (props) => {
                       <path
                         d="M15.0269 5.10064C14.9477 4.78424 14.7864 4.49435 14.5593 4.26024C14.3322 4.02613 14.0474 3.85609 13.7336 3.7673C12.5869 3.4873 8.00022 3.4873 8.00022 3.4873C8.00022 3.4873 3.41355 3.4873 2.26689 3.79397C1.95305 3.88276 1.6682 4.0528 1.44112 4.28691C1.21403 4.52102 1.05274 4.81091 0.973552 5.1273C0.763695 6.29101 0.661042 7.47151 0.666885 8.65397C0.659405 9.84533 0.762063 11.0348 0.973552 12.2073C1.06086 12.5139 1.22576 12.7927 1.45231 13.017C1.67887 13.2412 1.95943 13.4032 2.26689 13.4873C3.41355 13.794 8.00022 13.794 8.00022 13.794C8.00022 13.794 12.5869 13.794 13.7336 13.4873C14.0474 13.3985 14.3322 13.2285 14.5593 12.9944C14.7864 12.7603 14.9477 12.4704 15.0269 12.154C15.2351 10.999 15.3378 9.82753 15.3336 8.65397C15.341 7.46261 15.2384 6.2731 15.0269 5.10064Z"
                         stroke="#637381"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                       />
                       <path
                         d="M6.50022 10.834L10.3336 8.65397L6.50022 6.47397V10.834Z"
                         stroke="#637381"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                       />
                     </svg>
                     Youtube da Câmara de Curitiba
                   </span>
                 </div>
-                <a className="button button-third w-100">Saiba mais</a>
+                <Button
+                  href="/agenda/sessao-ordinaria"
+                  className="button button-third w-100"
+                  component="a"
+                >
+                  Saiba mais
+                </Button>
               </div>
             </div>
             <div className="card-default card">
@@ -178,7 +184,13 @@ const View = (props) => {
                     Câmara Municipal de Curitiba
                   </span>
                 </div>
-                <a className="button button-third w-100">Saiba mais</a>
+                <Button
+                  href="/agenda/audiencias-publicas"
+                  className="button button-third w-100"
+                  component="a"
+                >
+                  Saiba mais
+                </Button>
               </div>
             </div>
             <div className="card-default card">
@@ -230,20 +242,26 @@ const View = (props) => {
                       <path
                         d="M15.0269 5.10064C14.9477 4.78424 14.7864 4.49435 14.5593 4.26024C14.3322 4.02613 14.0474 3.85609 13.7336 3.7673C12.5869 3.4873 8.00022 3.4873 8.00022 3.4873C8.00022 3.4873 3.41355 3.4873 2.26689 3.79397C1.95305 3.88276 1.6682 4.0528 1.44112 4.28691C1.21403 4.52102 1.05274 4.81091 0.973552 5.1273C0.763695 6.29101 0.661042 7.47151 0.666885 8.65397C0.659405 9.84533 0.762063 11.0348 0.973552 12.2073C1.06086 12.5139 1.22576 12.7927 1.45231 13.017C1.67887 13.2412 1.95943 13.4032 2.26689 13.4873C3.41355 13.794 8.00022 13.794 8.00022 13.794C8.00022 13.794 12.5869 13.794 13.7336 13.4873C14.0474 13.3985 14.3322 13.2285 14.5593 12.9944C14.7864 12.7603 14.9477 12.4704 15.0269 12.154C15.2351 10.999 15.3378 9.82753 15.3336 8.65397C15.341 7.46261 15.2384 6.2731 15.0269 5.10064Z"
                         stroke="#637381"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                       />
                       <path
                         d="M6.50022 10.834L10.3336 8.65397L6.50022 6.47397V10.834Z"
                         stroke="#637381"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                       />
                     </svg>
                     Youtube da Câmara de Curitiba
                   </span>
                 </div>
-                <a className="button button-third w-100">Saiba mais</a>
+                <Button
+                  href="/agenda/sessao-ordinaria"
+                  className="button button-third w-100"
+                  component="a"
+                >
+                  Saiba mais
+                </Button>
               </div>
             </div>
           </div>

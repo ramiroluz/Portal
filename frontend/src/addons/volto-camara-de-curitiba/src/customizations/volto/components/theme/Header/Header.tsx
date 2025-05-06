@@ -1,5 +1,5 @@
-import React, { useState, useRef, useEffect, FC } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useRef, useEffect } from 'react';
+import { UniversalLink } from '@plone/volto/components';
 import { motion } from 'framer-motion';
 import { Button } from '@mui/material';
 import MenuIcon from './Icons/MenuIcon';
@@ -12,9 +12,9 @@ import LoginBar from './LoginBar';
 import PropTypes from 'prop-types';
 import Destaques from '../../../../../components/DropdownMenu/components/Destaques';
 import { flattenToAppURL } from '@plone/volto/helpers';
-import { HeaderProps } from './types';
+import { HeaderProps, MenuHeaderItem, MenuItem } from './types';
 
-const menuData = [
+const menuData: MenuItem[] = [
   {
     title: 'Atendimento',
     items: [
@@ -117,19 +117,22 @@ const menuData = [
   },
 ];
 
-const Header: FC<HeaderProps> = (props) => {
+const Header = (props: HeaderProps): JSX.Element => {
   const [act, setAct] = useState(false);
-  const [activeMenu, setActiveMenu] = useState(menuData[0]);
-  const menuRef = useRef(null);
-  const buttonRef = useRef(null);
+  const [activeMenu, setActiveMenu] = useState<MenuItem>(menuData[0]);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
-  const menuHeader = Destaques('/destaques', '');
+  const menuHeader = Destaques('/destaques', '') as MenuHeaderItem[];
 
   // Fecha o menu se clicar fora
   useEffect(() => {
-    function handleClickOutside(event) {
-      if (menuRef.current && !menuRef.current.contains(event.target)) {
-        if (buttonRef.current && !buttonRef.current.contains(event.target))
+    function handleClickOutside(event: MouseEvent) {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        if (
+          buttonRef.current &&
+          !buttonRef.current.contains(event.target as Node)
+        )
           setAct(false);
       }
     }
@@ -157,19 +160,19 @@ const Header: FC<HeaderProps> = (props) => {
           <div className="container-base container">
             <div className="stack row flex-between py-16">
               <div className="stack row gap-16">
-                <a className="link-flex">
+                <a href="#acessibilidade" className="link-flex">
                   <AccessibleForwardIcon className="icon" />
                   Acessibilidade
                 </a>
-                <a className="link-flex">
+                <a href="#contraste" className="link-flex">
                   <ContrastCircleIcon className="icon" />
                   Contraste
                 </a>
-                <a className="link-flex">
+                <a href="#aumentar-fonte" className="link-flex">
                   <ExposurePlusIcon className="icon" />
                   Aumentar letras
                 </a>
-                <a className="link-flex">
+                <a href="#vlibras" className="link-flex">
                   <SignLanguageOutlinedIcon className="icon" />
                   Vlibras
                 </a>
@@ -187,7 +190,7 @@ const Header: FC<HeaderProps> = (props) => {
       <div className="stack background-primary position-sticky z-999">
         <div className="container-base header py-16 w-100 fadeIn">
           <div className="stack row align-items-center flex-between">
-            <a href="/es-lint-test" className="d-sm-block d-none mr-0">
+            <a href="#" className="d-sm-block d-none mr-0">
               <img src="/icons/acessibilidade.svg" alt="Acessibilidade" />
             </a>
             <div className="stack row gap-24">
@@ -198,7 +201,7 @@ const Header: FC<HeaderProps> = (props) => {
                     ? 'link-flex menu d-mb-none act'
                     : 'link-flex menu d-mb-none'
                 }
-                href="/es-lint-test"
+                href="#menu"
                 onClick={() => {
                   setAct(!act);
                 }}
@@ -206,22 +209,22 @@ const Header: FC<HeaderProps> = (props) => {
                 <MenuIcon />
                 MENU
               </Button>
-              <Link to="/" alt="Página Inicial">
+              <UniversalLink href="/" className="logo-link">
                 <img
                   src="/camara-curitiba.png"
-                  alt=""
+                  alt="Logo da Câmara Municipal de Curitiba"
                   className="logo-camara"
                 />
-              </Link>
+              </UniversalLink>
             </div>
-            <a href="/es-lint-test" className="menu-mobile">
+            <Button href="#menu-mobile" className="menu-mobile">
               <img src="/icons/menu-mobile.svg" alt="Menu mobile" />
-            </a>
+            </Button>
             <div className="links-menu row align-items-center gap-8 d-mb-none stack">
               <p className="fs-16 fw-600 text-white mb-0">Destaques:</p>
-              {menuHeader.map((z, i) => (
-                <>
-                  {i != 0 && (
+              {menuHeader.map((item: MenuHeaderItem, index: number) => (
+                <React.Fragment key={index}>
+                  {index !== 0 && (
                     <svg
                       width="2"
                       height="13"
@@ -235,27 +238,24 @@ const Header: FC<HeaderProps> = (props) => {
                       />
                     </svg>
                   )}
-                  {z.mode === 'simpleLink' && (
-                    <Link
-                      to={flattenToAppURL(z.linkUrl?.[0]?.['@id'])}
-                      key={i}
-                      title={z?.title}
+                  {item.mode === 'simpleLink' && (
+                    <UniversalLink
+                      href={flattenToAppURL(item.linkUrl?.[0]?.['@id'] || '')}
+                      title={item.title}
                     >
-                      {z.title}
-                    </Link>
+                      {item.title}
+                    </UniversalLink>
                   )}
-                  {z.mode === 'linkExternal' && (
+                  {item.mode === 'linkExternal' && (
                     <a
-                      href={z?.link_external}
+                      href={item.link_external}
                       target="_blank"
-                      title={z?.title}
-                      key={i}
-                      rel="noreferrer"
+                      rel="noopener noreferrer"
                     >
-                      {z.title}
+                      {item.title}
                     </a>
                   )}
-                </>
+                </React.Fragment>
               ))}
             </div>
           </div>
@@ -275,7 +275,7 @@ const Header: FC<HeaderProps> = (props) => {
                     {menuData.map((menu, index) => (
                       <li key={index}>
                         <a
-                          href="/es-lint-test"
+                          href="#"
                           className={
                             menu.title === activeMenu.title ? 'active' : ''
                           }
@@ -294,7 +294,7 @@ const Header: FC<HeaderProps> = (props) => {
                   <ul className="grid-col-2 col-menu">
                     {activeMenu.items.map((item, idx) => (
                       <li key={idx}>
-                        <a href="/es-lint-test" title={item}>
+                        <a href="#" title={item}>
                           <span>{item}</span>
                           <img src="/icons/menu/col-menu.svg" alt={item} />
                         </a>

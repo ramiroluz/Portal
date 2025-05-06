@@ -51,6 +51,8 @@ const View = (props) => {
               <img
                 src={getYouTubeThumbnail(data?.youtube)}
                 className="iframe"
+                title="Live Stream"
+                alt="Live Stream"
               />
             ) : (
               <Typography>Insira a URL ao vivo</Typography>

@@ -172,11 +172,11 @@ const View = (props) => {
                     <Stack className="video-item" spacing={2}>
                       <div className="thumbnail">
                         <iframe
+                          title="Video"
                           src={
                             createYouTubeEmbed(podcasts[podcastSelect]?.link) +
                             (autoPlayUseEffectP ? '?autoplay=1' : '')
                           }
-                          title="Video"
                           frameBorder="0"
                           allowFullScreen="true"
                           allow="autoplay"
@@ -224,7 +224,7 @@ const View = (props) => {
                             loading="lazy"
                           />
                           <div className="play">
-                            <img src="/icons/play.svg" />
+                            <img src="/icons/play.svg" alt="Play" />
                           </div>
                         </div>
                         <Stack>
@@ -249,6 +249,7 @@ const View = (props) => {
                     <Stack className="video-item" spacing={2}>
                       <div className="thumbnail">
                         <iframe
+                          title={lives[livesSelect]?.title}
                           src={
                             createYouTubeEmbed(lives[livesSelect]?.link) +
                             (autoPlayUseEffectP ? '?autoplay=1' : '')
@@ -300,7 +301,7 @@ const View = (props) => {
                             loading="lazy"
                           />
                           <div className="play">
-                            <img src="/icons/play.svg" />
+                            <img src="/icons/play.svg" alt="Play" />
                           </div>
                         </div>
                         <Stack>
@@ -330,6 +331,7 @@ const View = (props) => {
                               institucional[institucionalSelect]?.link,
                             ) + (autoPlayUseEffectP ? '?autoplay=1' : '')
                           }
+                          title={institucional[podcastSelect]?.title}
                           frameBorder="0"
                           allowFullScreen="true"
                           allow="autoplay"
@@ -377,7 +379,7 @@ const View = (props) => {
                             loading="lazy"
                           />
                           <div className="play">
-                            <img src="/icons/play.svg" />
+                            <img src="/icons/play.svg" alt="Play" />
                           </div>
                         </div>
                         <Stack>
