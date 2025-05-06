@@ -118,6 +118,6 @@ jobs:
           platforms: linux/amd64
           context: frontend/
           file: frontend/Dockerfile
-          push: true,
+          push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: $${{ steps.meta.outputs.labels }}
