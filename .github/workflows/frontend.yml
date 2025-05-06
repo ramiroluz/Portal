@@ -92,12 +92,6 @@ jobs:
             ${{ env.IMAGE_NAME_PREFIX }}:${{ env.IMAGE_NAME_SUFFIX }}
           labels: |
             org.label-schema.docker.cmd=docker run -d -p 3000:3000 ${{ env.IMAGE_NAME_PREFIX }}:${{env.IMAGE_NAME_SUFFIX}}
-          flavor:
-            latest=false
-          tags: |
-            type=ref,event=branch
-            type=sha
-            type=raw,value=latest,enable={{is_default_branch}}
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
@@ -111,6 +105,7 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+
 
       - name: Build and push
         uses: docker/build-push-action@v4
