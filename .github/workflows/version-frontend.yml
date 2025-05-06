@@ -1,0 +1,40 @@
+name: Bump Version for Frontend
+
+on:
+  push:
+    branches:
+      - develop
+      - homolog
+      - main
+
+jobs:
+  bump-version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
+      - name: Bump version in package.json
+        run: |
+          branch_name=$(echo "${GITHUB_REF}" | sed 's|refs/heads/||')
+          if [[ "$branch_name" == "develop" ]]; then
+            version_suffix="-dev"
+          elif [[ "$branch_name" == "homolog" ]]; then
+            version_suffix="-rc"
+          elif [[ "$branch_name" == "main" ]]; then
+            version_suffix=""
+          fi
+          npm version patch --no-git-tag-version
+          sed -i "s/\"version\": \".*\"/\"version\": \"$(node -p \"require('./package.json').version\")${version_suffix}\"/" frontend/package.json
+
+      - name: Commit version bump
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git commit -am "Bump frontend version"
+          git push

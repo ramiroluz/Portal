@@ -1,0 +1,42 @@
+name: Bump Version for Backend
+
+on:
+  push:
+    branches:
+      - develop
+      - homolog
+      - main
+
+jobs:
+  bump-version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
+
+      - name: Install dependencies
+        run: pip install setuptools
+
+      - name: Bump version in setup.py
+        run: |
+          branch_name=$(echo "${GITHUB_REF}" | sed 's|refs/heads/||')
+          if [[ "$branch_name" == "develop" ]]; then
+            version_type="pre"
+          elif [[ "$branch_name" == "homolog" ]]; then
+            version_type="rc"
+          elif [[ "$branch_name" == "main" ]]; then
+            version_type="release"
+          fi
+          sed -i "s/version=\".*\"/version=\"$(python -c 'import semantic_version; print(semantic_version.Version(\"1.0.0\").next_patch())')\"/" backend/src/camara_de_curitiba/setup.py
+
+      - name: Commit version bump
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git commit -am "Bump backend version"
+          git push
