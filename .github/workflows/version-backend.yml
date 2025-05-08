@@ -20,7 +20,7 @@ jobs:
           python-version: "3.11"
 
       - name: Install dependencies
-        run: pip install setuptools
+        run: pip install setuptools semantic-version
 
       - name: Bump version in setup.py
         run: |
