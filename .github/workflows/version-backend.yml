@@ -42,8 +42,8 @@ jobs:
 
       - name: Commit version bump and changelog
         run: |
-          git config user.name "github-actions"
-          git config user.email "actions@github.com"
+          git config user.name ${{ github.actor }}
+          git config user.email ${{ github.actor }}@users.noreply.github.com
           git add backend/src/camara_de_curitiba/setup.py backend/CHANGELOG.md
           git commit -m "Bump backend version and update changelog"
           git push
