@@ -49,6 +49,8 @@ jobs:
         id: create_branch
         run: |
           branch_name="bump-backend-version-$GITHUB_RUN_ID"
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+          git config --global user.name "${{ github.actor }}"
           git checkout -b "$branch_name"
           git add backend/src/camara_de_curitiba/setup.py backend/CHANGELOG.md
           git commit -m "Bump backend version and update changelog"
