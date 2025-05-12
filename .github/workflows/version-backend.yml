@@ -72,4 +72,5 @@ jobs:
       - name: Draft release notes
         uses: release-drafter/release-drafter@v5
         with:
+          token: ${{ secrets.GITHUB_TOKEN }}
           config-name: backend-release-drafter.yml
