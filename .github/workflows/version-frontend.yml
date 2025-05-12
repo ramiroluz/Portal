@@ -51,7 +51,7 @@ jobs:
         with:
             branch: ${{ github.ref_name }}
             title: "Bump Frontend Version and Update Changelog"
-            body: "This PR updates the version in `package.json` and regenerates the `CHANGELOG.md`."
+            body: "This PR updates the version in 'package.json' and regenerates the 'CHANGELOG.md'."
             labels: "automated"
             auto-merge: true
   draft-release:
@@ -61,4 +61,5 @@ jobs:
       - name: Draft release notes
         uses: release-drafter/release-drafter@v5
         with:
+          token: ${{ secrets.GITHUB_TOKEN }}
           config-name: frontend-release-drafter.yml
