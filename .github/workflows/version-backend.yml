@@ -60,7 +60,7 @@ jobs:
         uses: peter-evans/create-pull-request@v5
         with:
           branch: bump-backend-version-${{ github.run_id }}
-          base: develop
+          base: ${{ branch_name }}
           title: "Bump Backend Version and Update Changelog"
           body: "This PR updates the version in 'setup.py' and regenerates the 'CHANGELOG.md'."
           labels: "automated"
