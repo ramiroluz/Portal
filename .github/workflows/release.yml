@@ -1,5 +1,16 @@
 name: Release
 on:
+  workflow_dispatch:
+    inputs:
+      release:
+        description: "Release version"
+        required: true
+        default: "patch"
+        type: choice
+        options:
+          - major
+          - minor
+          - patch
   push:
     branches:
       - master # or main
