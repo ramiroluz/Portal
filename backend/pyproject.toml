@@ -1,3 +1,15 @@
+[project]
+name = "camara-de-curitiba-portal"
+dynamic = ["version"]
+description = "Portal da Câmara de Curitiba"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+    { name = "Câmara de Curitiba", email = "dtic@cmc.pr.gov.br" },
+]
+
+[tool.hatch.version]
+path = "src/camara_de_curitiba/src/camara_de_curitiba/__init__.py"
 
 [tool.pytest.ini_options]
 addopts = "--cov-report term --cov=camara_de_curitiba"
